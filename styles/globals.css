@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+body,
+html {
+  overflow-x: hidden; /* Prevent horizontal scroll from animations */
+  background-color: #121212;
+  height: 200dvh;
+}
+
+/* Optional: Smooth scrolling for the whole page */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Page Transition */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none !important;
+}
+
+::view-transition-group(root) {
+  z-index: auto !important;
+}
+
+::view-transition-image-pair(root) {
+  isolation: isolate;
+  will-change: transform, opacity, clip-path;
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 10000;
+  animation: none !important;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+  animation: none !important;
+}
+
+/* Hide scrollbar for all elements */
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* Neue Montreal */
+@font-face {
+  font-family: "mon";
+  src: url("/assets/fonts/montreal/NeueMontreal-Bold.woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "mon";
+  src: url("/assets/fonts/montreal/NeueMontreal-Medium.woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "mon";
+  src: url("/assets/fonts/montreal/NeueMontreal-Regular.woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "mon";
+  src: url("/assets/fonts/montreal/NeueMontreal-Light.woff2");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Gebuk */
+@font-face {
+  font-family: "gebuk";
+  src: url("/assets/fonts/gebuk/gebuk-regular.woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* PP Mori */
+@font-face {
+  font-family: "mori";
+  src: url("/assets/fonts/mori/PPMori-Extralight.woff2");
+  font-weight: 200;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "mori";
+  src: url("/assets/fonts/mori/PPMori-Regular.woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+
+/* JetBrains */
+@font-face {
+  font-family: "jet";
+  src: url("/assets/fonts/jet/JetBrainsMono-Medium.woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "jet";
+  src: url("/assets/fonts/jet/JetBrainsMono-Regular.woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* Roobert */
+@font-face {
+  font-family: "roobert";
+  src: url("/assets/fonts/roobert/Roobert-light.woff2");
+  font-weight: 200;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "roobert";
+  src: url("/assets/fonts/roobert/Roobert-regular.woff2");
+  font-weight: 500;
+  font-display: swap;
+}

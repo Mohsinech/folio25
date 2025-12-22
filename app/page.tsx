@@ -1,65 +1,356 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import React from "react";
+import styles from "./page.module.css";
+import ScrambleLink from "@/utils/ScrambleText/ScrambleText";
+import ProjectMarquee from "@/components/ProjectMarquee/ProjectMarquee";
+import { motion } from "framer-motion";
+
+// 1. Same animation settings as your Header
+const revealVars = {
+  initial: { y: "100%", opacity: 0, skewY: 2 },
+  animate: (i: number) => ({
+    y: "0%",
+    opacity: 1,
+    skewY: 0,
+    transition: {
+      duration: 2,
+      ease: [0.87, 0.13, 0, 1],
+      delay: i * 0.05 + 0.2, // Base delay of 0.2s so it starts after header
+    },
+  }),
+};
+
+const Home = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className={styles.main}>
+      <section className={styles.hero}>
+        <div className={styles.content}>
+          <div className={styles.headings}>
+            {/* BLOCK ONE (Indices 0-3) */}
+            <div className={styles.titlesOne}>
+              <div className="overflow-hidden">
+                <motion.h1
+                  custom={0}
+                  variants={revealVars}
+                  initial="initial"
+                  animate="animate"
+                >
+                  A versatile web developer and full-
+                </motion.h1>
+              </div>
+
+              <div className="overflow-hidden">
+                <motion.h1
+                  custom={1}
+                  variants={revealVars}
+                  initial="initial"
+                  animate="animate"
+                >
+                  stack creator with a maker’s mindset.
+                </motion.h1>
+              </div>
+
+              <div className="overflow-hidden">
+                <motion.h1
+                  custom={2}
+                  variants={revealVars}
+                  initial="initial"
+                  animate="animate"
+                >
+                  I don’t just build websites—I create
+                </motion.h1>
+              </div>
+
+              <div className="overflow-hidden">
+                <motion.h1
+                  custom={3}
+                  variants={revealVars}
+                  initial="initial"
+                  animate="animate"
+                >
+                  high-performance digital experiences.
+                </motion.h1>
+              </div>
+            </div>
+
+            {/* BLOCK TWO (Indices 4-8) */}
+            <div className={styles.titlesTwo}>
+              <div className="overflow-hidden">
+                <motion.h1
+                  custom={4}
+                  variants={revealVars}
+                  initial="initial"
+                  animate="animate"
+                >
+                  share the journey, and help others
+                </motion.h1>
+              </div>
+
+              <div className="overflow-hidden">
+                <motion.h1
+                  custom={5}
+                  variants={revealVars}
+                  initial="initial"
+                  animate="animate"
+                >
+                  learn along the way. As a solo
+                </motion.h1>
+              </div>
+
+              <div className="overflow-hidden">
+                <motion.h1
+                  custom={6}
+                  variants={revealVars}
+                  initial="initial"
+                  animate="animate"
+                >
+                  entrepreneur, I turn ideas into
+                </motion.h1>
+              </div>
+
+              <div className="overflow-hidden">
+                <motion.h1
+                  custom={7}
+                  variants={revealVars}
+                  initial="initial"
+                  animate="animate"
+                >
+                  <span>
+                    <ScrambleLink
+                      label="Projects"
+                      href="/work"
+                      className={styles.link}
+                    />
+                    <sup>9</sup>
+                  </span>{" "}
+                  that connect code and{" "}
+                </motion.h1>
+              </div>
+
+              <div className="overflow-hidden">
+                <motion.h1
+                  custom={8}
+                  variants={revealVars}
+                  initial="initial"
+                  animate="animate"
+                >
+                  community.
+                </motion.h1>
+              </div>
+            </div>
+          </div>
+
+          {/* LISTS (Indices 9+) */}
+          {/* LISTS (Updated Indices for Overlap) */}
+          <div className={styles.lists}>
+            {/* 1. CLIENTS - Starts at index 2 (Parallel with main text) */}
+            <div className={styles.listOne}>
+              <div className="overflow-hidden">
+                <motion.h3
+                  custom={2}
+                  variants={revealVars}
+                  initial="initial"
+                  animate="animate"
+                >
+                  <div className={styles.dot}></div>
+                  CLIENTS
+                </motion.h3>
+              </div>
+
+              <ul>
+                <li>
+                  <motion.div
+                    custom={3}
+                    variants={revealVars}
+                    initial="initial"
+                    animate="animate"
+                  >
+                    <ScrambleLink
+                      label="Ayourluxe"
+                      href="/work/ayourluxe"
+                      className={styles.link}
+                    />
+                  </motion.div>
+                </li>
+                <li>
+                  <motion.div
+                    custom={4}
+                    variants={revealVars}
+                    initial="initial"
+                    animate="animate"
+                  >
+                    <ScrambleLink
+                      label="Hyne Ma"
+                      href="/work/hynema"
+                      className={styles.link}
+                    />
+                  </motion.div>
+                </li>
+                <li>
+                  <motion.div
+                    custom={5}
+                    variants={revealVars}
+                    initial="initial"
+                    animate="animate"
+                  >
+                    <ScrambleLink
+                      label="Afolki Beauty"
+                      href="/work/afolkibeauty"
+                      className={styles.link}
+                    />
+                  </motion.div>
+                </li>
+                <li>
+                  <motion.div
+                    custom={6}
+                    variants={revealVars}
+                    initial="initial"
+                    animate="animate"
+                  >
+                    <ScrambleLink
+                      label="Lalla Ghzali"
+                      href="/work/lallaghzali"
+                      className={styles.link}
+                    />
+                  </motion.div>
+                </li>
+                <li>
+                  <motion.div
+                    custom={7}
+                    variants={revealVars}
+                    initial="initial"
+                    animate="animate"
+                  >
+                    <ScrambleLink
+                      label="Mohaba"
+                      href="/work/mohaba"
+                      className={styles.link}
+                    />
+                  </motion.div>
+                </li>
+              </ul>
+            </div>
+
+            {/* 2. COLLABORATE - Also starts at index 2 (Flows parallel to Clients) */}
+            <div className={styles.listTwo}>
+              <div className="overflow-hidden">
+                <motion.h3
+                  custom={2}
+                  variants={revealVars}
+                  initial="initial"
+                  animate="animate"
+                >
+                  <div className={styles.dot}></div>
+                  Let&apos;s Collaborate
+                </motion.h3>
+              </div>
+
+              <ul>
+                <li>
+                  <motion.div
+                    custom={3}
+                    variants={revealVars}
+                    initial="initial"
+                    animate="animate"
+                  >
+                    <ScrambleLink
+                      label="LinkedIn"
+                      href="#linkedin"
+                      className={styles.link}
+                    />
+                  </motion.div>
+                </li>
+                <li>
+                  <motion.div
+                    custom={4}
+                    variants={revealVars}
+                    initial="initial"
+                    animate="animate"
+                  >
+                    <ScrambleLink
+                      label="Instagram"
+                      href="#instagram"
+                      className={styles.link}
+                    />
+                  </motion.div>
+                </li>
+                <li>
+                  <motion.div
+                    custom={5}
+                    variants={revealVars}
+                    initial="initial"
+                    animate="animate"
+                  >
+                    <ScrambleLink
+                      label="Email"
+                      href="#email"
+                      className={styles.link}
+                    />
+                  </motion.div>
+                </li>
+                <li>
+                  <motion.div
+                    custom={6}
+                    variants={revealVars}
+                    initial="initial"
+                    animate="animate"
+                  >
+                    <ScrambleLink
+                      label="WhatsApp"
+                      href="#whatsapp"
+                      className={styles.link}
+                    />
+                  </motion.div>
+                </li>
+              </ul>
+
+              <div className="overflow-hidden">
+                <motion.p
+                  custom={7}
+                  variants={revealVars}
+                  initial="initial"
+                  animate="animate"
+                >
+                  HAVE A PROJECT IN MINDE? <br />
+                  BOOK A FREE CONSULTATION.
+                </motion.p>
+              </div>
+            </div>
+
+            {/* 3. CURRENT POSITION - Starts lower (Index 6) to fill the bottom gap */}
+            <div className={styles.listTwo}>
+              <div className="overflow-hidden">
+                <motion.h3
+                  custom={6}
+                  variants={revealVars}
+                  initial="initial"
+                  animate="animate"
+                >
+                  <div className={styles.dot}></div>
+                  CURRENT POSITION
+                </motion.h3>
+              </div>
+              <div className="overflow-hidden">
+                <motion.p
+                  custom={7}
+                  variants={revealVars}
+                  initial="initial"
+                  animate="animate"
+                >
+                  Freelance designer & developer <br />
+                  Since 2020, content creator <br />
+                  Solo entrepreneur.
+                </motion.p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+
+        <ProjectMarquee />
+      </section>
+    </main>
   );
-}
+};
+
+export default Home;

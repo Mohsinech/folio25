@@ -1,0 +1,28 @@
+.sliderContainer {
+  position: absolute;
+  bottom: -5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.slider {
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+
+.wrapper {
+  display: flex;
+  flex-shrink: 0; /* Prevents squishing */
+  padding-right: 10px; /* Gap between the two loops */
+  gap: 10px; /* Gap between individual projects */
+}
+
+/* Your red project box style */
+.project {
+  width: 400px; /* Needs a fixed min-width to work well */
+  height: 200px;
+  background-color: #f1f1f1;
+  flex-shrink: 0;
+  border-radius: 0.2rem;
+}
