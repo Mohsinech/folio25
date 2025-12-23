@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import styles from "./page.module.css";
 import ScrambleLink from "@/utils/ScrambleText/ScrambleText";
 import ProjectMarquee from "@/components/ProjectMarquee/ProjectMarquee";

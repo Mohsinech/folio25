@@ -27,7 +27,10 @@ const ScrambleLink = ({
   // 2. The View Transition Logic (Your Code)
   function slideInOut() {
     document.documentElement.animate(
-      [{ transform: "translateY(0)" }, { transform: "translateY(-35%)" }],
+      [
+        { transform: "translateY(0)", opacity: 1, scale: 1 },
+        { opacity: 0, scale: 0.8, transform: "translateY(-35%)" },
+      ],
       {
         duration: 1500,
         easing: "cubic-bezier(0.87, 0, 0.13, 1)",

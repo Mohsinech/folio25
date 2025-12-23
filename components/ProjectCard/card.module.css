@@ -1,0 +1,83 @@
+.imageWrapper {
+  width: 100%;
+  min-height: 90vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* image frame */
+.projectLink {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+  display: block;
+  margin: 0 auto;
+
+  overflow: hidden;
+}
+
+/* Next Image */
+.projectImage {
+  object-fit: cover; /* 👈 FULL IMAGE, NO CROP */
+  object-position: center;
+
+  transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* optional gentle hover */
+.projectLink:hover .projectImage {
+  transform: scale(1.03);
+}
+
+/* --- CURSOR STYLES --- */
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100px;
+
+  height: 30px;
+  /* background-color: #a6ff00; */
+  background-color: #121212;
+  border-radius: 1rem;
+  pointer-events: none;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+}
+
+.cursorInner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.marquee {
+  width: 200%; /* Wider than container to allow sliding */
+  white-space: nowrap;
+  position: absolute;
+}
+
+.track {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #f1f1f1;
+  font-family: sans-serif;
+}
+
+.track span {
+  padding-right: 10px;
+}

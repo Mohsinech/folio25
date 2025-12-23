@@ -3,7 +3,7 @@
 body,
 html {
   overflow-x: hidden; /* Prevent horizontal scroll from animations */
-  background-color: #121212;
+  background-color: #171717;
   height: 200dvh;
 }
 
@@ -41,7 +41,7 @@ html.lenis body {
 
 ::view-transition-image-pair(root) {
   isolation: isolate;
-  will-change: transform, opacity, clip-path;
+  will-change: transform, opacity, scale, clip-path;
   z-index: 1;
 }
 
@@ -95,14 +95,6 @@ html.lenis body {
   font-display: swap;
 }
 
-/* Gebuk */
-@font-face {
-  font-family: "gebuk";
-  src: url("/assets/fonts/gebuk/gebuk-regular.woff2");
-  font-weight: 400;
-  font-display: swap;
-}
-
 /* PP Mori */
 @font-face {
   font-family: "mori";
@@ -146,4 +138,11 @@ html.lenis body {
   src: url("/assets/fonts/roobert/Roobert-regular.woff2");
   font-weight: 500;
   font-display: swap;
+}
+
+/* Times */
+@font-face {
+  font-family: "times";
+  src: url("/assets/fonts/Times/TimesNow-SemiLight.woff2");
+  font-weight: 200;
 }

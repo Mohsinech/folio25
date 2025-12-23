@@ -2,7 +2,7 @@
 
 import styles from "./header.module.css";
 import ScrambleLink from "@/utils/ScrambleText/ScrambleText";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 // 1. Define your links here
 const NAV_LINKS = [
@@ -25,14 +25,19 @@ const revealVars = {
     transition: {
       duration: 2,
       ease: [0.87, 0.13, 0, 1],
-      delay: i * 0.1, // Automatic stagger based on index
+      delay: i * 0.2, // Automatic stagger based on index
     },
   }),
 };
 
+//
+
 const Header = () => {
+  //
+  const scrollY = useScroll().scrollY;
+  const headerY = useTransform(scrollY, [0, 200], [0, -100]);
   return (
-    <header className={styles.header}>
+    <motion.header style={{ y: headerY }} className={styles.header}>
       <nav className={styles.nav}>
         {/* Logo (Animate first) */}
         <div className="overflow-hidden">
@@ -70,7 +75,7 @@ const Header = () => {
           ))}
         </ul>
       </nav>
-    </header>
+    </motion.header>
   );
 };
 

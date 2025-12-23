@@ -1,0 +1,70 @@
+.main {
+  width: 100%;
+  height: 100%;
+}
+
+.work {
+  width: 100%;
+  height: 400dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  overflow: hidden;
+  width: 100%;
+  padding: 0 2rem;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content h1 {
+  display: flex;
+  font-size: 21.5vw;
+  font-weight: 500;
+  line-height: 1;
+  color: #f1f1f1;
+  font-family: "mon", sans-serif;
+}
+
+/*  */
+.latest {
+  display: flex;
+  align-items: flex-end;
+  gap: 2rem;
+}
+
+.latestProject {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  height: 120dvh;
+  background-color: #f1f1f1;
+}
+
+/*  */
+.desc {
+  padding: 4rem;
+}
+
+.desc h1 {
+  font-family: "times", sans-serif;
+  font-size: 2.8rem;
+  line-height: normal;
+  color: #f1f1f1;
+}
+
+.desc h1 span {
+  margin-left: 8rem;
+}
+
+/*  */
+.projectGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  padding: 0 3rem;
+}
