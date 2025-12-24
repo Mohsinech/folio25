@@ -1,6 +1,6 @@
 .imageWrapper {
   width: 100%;
-  min-height: 90vh;
+  min-height: 92vh;
 
   display: flex;
   flex-direction: column;
@@ -42,9 +42,9 @@
   width: 100px;
 
   height: 30px;
-  /* background-color: #a6ff00; */
-  background-color: #121212;
-  border-radius: 1rem;
+  background-color: #a6ff00;
+  /* background-color: #121212; */
+  border-radius: 0.5rem;
   pointer-events: none;
   z-index: 9999;
   display: flex;
@@ -74,7 +74,7 @@
   font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
-  color: #f1f1f1;
+  color: #121212;
   font-family: sans-serif;
 }
 

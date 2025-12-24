@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import ProjectCard from "@/components/ProjectCard/ProjectCard";
 import styles from "./page.module.css";
 import { motion } from "framer-motion";
+import { projects } from "./data";
 
 // --- NEW COMPONENT: Scrambles text when it enters the viewport ---
 const ScrambleText = ({
@@ -114,7 +115,9 @@ const Work = () => {
 
         {/* Project Grid */}
         <section className={styles.projectGrid}>
-          <ProjectCard />
+          {projects.map((item, index) => (
+            <ProjectCard key={index} {...item} />
+          ))}
         </section>
       </section>
     </main>

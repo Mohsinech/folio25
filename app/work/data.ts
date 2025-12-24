@@ -12,4 +12,10 @@ export const projects: Project[] = [
     imageUrl: "/assets/projects/hyne.webp",
     projectUrl: "/work/hyne",
   },
+  {
+    id: 2,
+    title: "2024 Portfolio",
+    imageUrl: "/assets/projects/portfolio.webp",
+    projectUrl: "/work/portfolio-2024",
+  },
 ];

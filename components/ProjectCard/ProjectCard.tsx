@@ -3,10 +3,16 @@
 import React, { useState, useEffect } from "react";
 import styles from "./card.module.css";
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import { projects } from "./data";
 import Image from "next/image";
 
-const ProjectCard = () => {
+interface ProjectProps {
+  id: number;
+  title: string;
+  imageUrl: string;
+  projectUrl: string;
+}
+
+const ProjectCard = ({ id, title, imageUrl, projectUrl }: ProjectProps) => {
   // --- 1. MOUSE PHYSICS ---
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -33,33 +39,31 @@ const ProjectCard = () => {
   return (
     <>
       <div className={styles.imageWrapper}>
-        {projects.map((project) => (
-          <a
-            key={project.id}
-            href={project.projectUrl}
-            className={styles.projectLink}
-            // --- 4. TRIGGERS ---
-            onMouseEnter={() => {
-              setIsHovering(true);
-              setActiveProject(project.title); // Sets text for marquee
+        <a
+          key={id}
+          href={projectUrl}
+          className={styles.projectLink}
+          // --- 4. TRIGGERS ---
+          onMouseEnter={() => {
+            setIsHovering(true);
+            setActiveProject(title); // Sets text for marquee
+          }}
+          onMouseLeave={() => {
+            setIsHovering(false);
+            setActiveProject(null);
+          }}
+        >
+          <Image
+            className={styles.projectImage}
+            src={imageUrl}
+            alt={title}
+            fill
+            style={{
+              backgroundSize: "cover",
+              backgroundPosition: "center",
             }}
-            onMouseLeave={() => {
-              setIsHovering(false);
-              setActiveProject(null);
-            }}
-          >
-            <Image
-              className={styles.projectImage}
-              src={project.imageUrl}
-              alt={project.title}
-              fill
-              style={{
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-            />
-          </a>
-        ))}
+          />
+        </a>
       </div>
 
       {/* --- 5. THE CURSOR --- */}
@@ -84,14 +88,20 @@ const ProjectCard = () => {
             <motion.div
               className={styles.track}
               animate={{ x: ["0%", "-50%"] }}
-              transition={{ repeat: Infinity, ease: "linear", duration: 5 }}
+              transition={{ repeat: Infinity, ease: "linear", duration: 25 }}
             >
               {/* Duplicate text to create seamless loop */}
               <span>
-                {activeProject} — {activeProject} —{" "}
+                {activeProject} — {activeProject} — {activeProject} —{" "}
+                {activeProject} — {activeProject} — {activeProject} —{" "}
+                {activeProject} — {activeProject} — {activeProject} —{" "}
+                {activeProject} — {activeProject} — {activeProject} —{" "}
               </span>
               <span>
-                {activeProject} — {activeProject} —{" "}
+                {activeProject} — {activeProject} — {activeProject} —{" "}
+                {activeProject} — {activeProject} — {activeProject} —{" "}
+                {activeProject} — {activeProject} — {activeProject} —{" "}
+                {activeProject} — {activeProject} — {activeProject} —{" "}
               </span>
             </motion.div>
           </div>
