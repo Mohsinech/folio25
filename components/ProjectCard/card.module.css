@@ -7,6 +7,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  position: relative;
 }
 
 /* image frame */
@@ -32,6 +33,43 @@
 /* optional gentle hover */
 .projectLink:hover .projectImage {
   transform: scale(1.03);
+}
+
+.projectContent {
+  position: absolute;
+  top: 3rem;
+  left: 3rem;
+  text-transform: uppeCaprcase;
+  z-index: 9999999;
+  font-family: "mon", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #f1f1f1;
+  mix-blend-mode: difference;
+}
+
+.projectContent a {
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+}
+
+.projectContent a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background-color: #f1f1f1;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 1s cubic-bezier(0.65, 0.05, 0, 1);
+}
+
+.imageWrapper:hover .projectContent a::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 /* --- CURSOR STYLES --- */

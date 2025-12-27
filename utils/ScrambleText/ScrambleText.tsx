@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-import { useTransitionRouter } from "next-view-transitions";
+import { Link, useTransitionRouter } from "next-view-transitions";
 
 // 1. Scramble Config
 const CYCLES_PER_LETTER = 2;
@@ -89,7 +89,7 @@ const ScrambleLink = ({
   };
 
   return (
-    <a
+    <Link
       href={href}
       onClick={handleClick}
       onMouseEnter={scramble}
@@ -99,7 +99,7 @@ const ScrambleLink = ({
       {...props}
     >
       <span>{text}</span>
-    </a>
+    </Link>
   );
 };
 

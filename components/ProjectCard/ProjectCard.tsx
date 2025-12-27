@@ -4,6 +4,10 @@ import React, { useState, useEffect } from "react";
 import styles from "./card.module.css";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
+import ScrambleLink from "@/utils/ScrambleText/ScrambleText";
+import { Link } from "next-view-transitions";
+// 1. IMPORT THE HOOK
+import { useTransitionRouter } from "next-view-transitions";
 
 interface ProjectProps {
   id: number;
@@ -13,11 +17,12 @@ interface ProjectProps {
 }
 
 const ProjectCard = ({ id, title, imageUrl, projectUrl }: ProjectProps) => {
+  // 2. INITIALIZE ROUTER
+  const router = useTransitionRouter();
+
   // --- 1. MOUSE PHYSICS ---
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-
-  // Smooth spring animation for the cursor (The "Lag" effect)
   const springConfig = { stiffness: 150, damping: 15, mass: 0.1 };
   const cursorX = useSpring(mouseX, springConfig);
   const cursorY = useSpring(mouseY, springConfig);
@@ -36,17 +41,52 @@ const ProjectCard = ({ id, title, imageUrl, projectUrl }: ProjectProps) => {
     return () => window.removeEventListener("mousemove", moveMouse);
   }, [mouseX, mouseY]);
 
+  // --- TRANSITION LOGIC ---
+  function slideInOut() {
+    document.documentElement.animate(
+      [
+        { transform: "translateY(0)", opacity: 1, scale: 1 },
+        { opacity: 0, scale: 0.8, transform: "translateY(-35%)" },
+      ],
+      {
+        duration: 1500,
+        easing: "cubic-bezier(0.87, 0, 0.13, 1)",
+        fill: "forwards",
+        pseudoElement: "::view-transition-old(root)",
+      }
+    );
+
+    document.documentElement.animate(
+      [
+        { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" },
+        { clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)" },
+      ],
+      {
+        duration: 1500,
+        easing: "cubic-bezier(0.87, 0, 0.13, 1)",
+        fill: "forwards",
+        pseudoElement: "::view-transition-new(root)",
+      }
+    );
+  }
+
   return (
     <>
       <div className={styles.imageWrapper}>
-        <a
+        <Link
           key={id}
           href={projectUrl}
+          onClick={(e) => {
+            e.preventDefault();
+            // 3. USE ROUTER.PUSH WITH CALLBACK
+            router.push(projectUrl, {
+              onTransitionReady: slideInOut,
+            });
+          }}
           className={styles.projectLink}
-          // --- 4. TRIGGERS ---
           onMouseEnter={() => {
             setIsHovering(true);
-            setActiveProject(title); // Sets text for marquee
+            setActiveProject(title);
           }}
           onMouseLeave={() => {
             setIsHovering(false);
@@ -63,10 +103,19 @@ const ProjectCard = ({ id, title, imageUrl, projectUrl }: ProjectProps) => {
               backgroundPosition: "center",
             }}
           />
-        </a>
+        </Link>
+
+        {/* Project Content */}
+        <div className={styles.projectContent}>
+          <ScrambleLink
+            href={projectUrl}
+            className={styles.projectTitle}
+            label={title}
+          />
+        </div>
       </div>
 
-      {/* --- 5. THE CURSOR --- */}
+      {/* --- CURSOR --- */}
       <motion.div
         className={styles.cursor}
         style={{
@@ -84,13 +133,11 @@ const ProjectCard = ({ id, title, imageUrl, projectUrl }: ProjectProps) => {
       >
         <div className={styles.cursorInner}>
           <div className={styles.marquee}>
-            {/* Infinite Marquee Animation */}
             <motion.div
               className={styles.track}
               animate={{ x: ["0%", "-50%"] }}
               transition={{ repeat: Infinity, ease: "linear", duration: 25 }}
             >
-              {/* Duplicate text to create seamless loop */}
               <span>
                 {activeProject} — {activeProject} — {activeProject} —{" "}
                 {activeProject} — {activeProject} — {activeProject} —{" "}

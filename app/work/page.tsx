@@ -96,11 +96,6 @@ const Work = () => {
           </h1>
         </div>
 
-        {/* Latest Project */}
-        <section className={styles.latest}>
-          <div className={styles.latestProject}></div>
-        </section>
-
         <section className={styles.desc}>
           <h1>
             <span> I truly</span> believe that good work needs a dedicated team,
