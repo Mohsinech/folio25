@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import SmoothScroll from "@/utils/SmoothScroll/SmoothScroll";
 import "@/styles/globals.css";
-import { Header } from "@/components/layouts";
 import { ViewTransitions } from "next-view-transitions";
+import { Header } from "@/components/layouts";
+import { SmoothScroll } from "@/utils";
 
 export const metadata: Metadata = {
   title: "Create Next App",

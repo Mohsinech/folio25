@@ -3,9 +3,8 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import styles from "./slug.module.css";
 import { AnimatedText, FadeInUp } from "@/components/ui/ui";
-import ParallaxHeader from "@/components/ParallaxHeader/ParallaxHeader";
-import ParallaxImage from "@/utils/ParallaxImage/ParallaxImage";
-import ParallaxImages from "@/utils/ParallaxImages/ParallaxImages";
+import { ParallaxImage, ParallaxImages, ProjectMarquee } from "@/utils";
+import { ParallaxHeader } from "@/components";
 
 export async function generateStaticParams() {
   return projects.map((project) => ({
@@ -156,6 +155,9 @@ export default async function ProjectSlugPage({ params }: ProjectPageProps) {
         parallaxImages={project.parallaxImages ?? []}
         title={project.title}
       />
+
+      {/* Project Url */}
+      <ProjectMarquee url={project.projectUrl} image={project.introImage} />
     </main>
   );
 }
