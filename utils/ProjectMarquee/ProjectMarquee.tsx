@@ -7,22 +7,27 @@ import Marquee from "react-fast-marquee";
 import Image from "next/image";
 
 interface ProjectMarqueeProps {
-  url: string;
+  ProjectUrl: string;
   image?: string;
 }
 
-const ProjectMarquee: React.FC<ProjectMarqueeProps> = ({ url, image }) => {
+const ProjectMarquee: React.FC<ProjectMarqueeProps> = ({
+  ProjectUrl,
+  image,
+}) => {
   return (
     <section className={styles.projectUrl}>
       <motion.a
         className={styles.projectUrlLink}
-        href={url}
+        href={ProjectUrl}
         initial={{ y: 100, skewY: 2 }}
         whileInView={{
           y: 0,
           skewY: 0,
         }}
         transition={{ duration: 2, ease: [0.65, 0.05, 0, 1] }}
+        target="_blank"
+        rel="noopener noreferrer"
       >
         <div className={styles.motionMarquee}>
           <Marquee className={styles.marquee} gradient={false} speed={60}>

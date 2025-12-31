@@ -3,7 +3,12 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import styles from "./slug.module.css";
 import { AnimatedText, FadeInUp } from "@/components/ui/ui";
-import { ParallaxImage, ParallaxImages, ProjectMarquee } from "@/utils";
+import {
+  NextProject,
+  ParallaxImage,
+  ParallaxImages,
+  ProjectMarquee,
+} from "@/utils";
 import { ParallaxHeader } from "@/components";
 
 export async function generateStaticParams() {
@@ -30,15 +35,23 @@ interface ProjectPageProps {
 }
 
 export default async function ProjectSlugPage({ params }: ProjectPageProps) {
-  // Await params if you are on Next.js 15 (Good practice anyway)
+  // Await params if you are on Next.js 15
   const { slug } = await params;
 
-  // FIX: Use the same logic here as you did in generateMetadata
-  const project = projects.find(
+  // 1. Find the INDEX first (instead of .find())
+  const currentIndex = projects.findIndex(
     (p) => p.projectUrl.replace("/work/", "") === slug
   );
 
-  if (!project) return notFound();
+  // 2. If index is -1, the project doesn't exist -> 404
+  if (currentIndex === -1) return notFound();
+
+  // 3. Get the CURRENT project
+  const project = projects[currentIndex];
+
+  // 4. Calculate the NEXT project (Modulo % loops back to the start)
+  const nextIndex = (currentIndex + 1) % projects.length;
+  const nextProject = projects[nextIndex];
 
   return (
     <main className={styles.projectPage}>
@@ -89,14 +102,14 @@ export default async function ProjectSlugPage({ params }: ProjectPageProps) {
         </div>
       </section>
 
-      {/* */}
+      {/* Parallax Header */}
       <ParallaxHeader
         imageUrl={project.introImage}
         title={project.title}
         hasCopyright={project.hasCopyright}
       />
 
-      {/*  */}
+      {/* Project Video Section */}
       <section className={styles.projectVid}>
         {/* Header */}
         <div className={styles.header}>
@@ -157,7 +170,17 @@ export default async function ProjectSlugPage({ params }: ProjectPageProps) {
       />
 
       {/* Project Url */}
-      <ProjectMarquee url={project.projectUrl} image={project.introImage} />
+      <ProjectMarquee
+        ProjectUrl={project.ProjectUrl ?? ""}
+        image={project.introImage}
+      />
+
+      {/* Next Project Component */}
+      <NextProject
+        title={nextProject.title}
+        image={nextProject.introImage}
+        url={nextProject.projectUrl}
+      />
     </main>
   );
 }
