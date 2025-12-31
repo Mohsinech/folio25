@@ -1,55 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
 import ProjectCard from "@/components/ProjectCard/ProjectCard";
 import styles from "./page.module.css";
 import { motion } from "framer-motion";
 import { projects } from "./data";
-
-// --- NEW COMPONENT: Scrambles text when it enters the viewport ---
-const ScrambleText = ({
-  text,
-  className,
-}: {
-  text: string;
-  className?: string;
-}) => {
-  const [display, setDisplay] = useState(text);
-  const [trigger, setTrigger] = useState(false);
-  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()";
-
-  useEffect(() => {
-    if (!trigger) return;
-
-    let iteration = 0;
-    const interval = setInterval(() => {
-      setDisplay(() =>
-        text
-          .split("")
-          .map((letter, index) => {
-            if (index < iteration) return text[index];
-            return chars[Math.floor(Math.random() * chars.length)];
-          })
-          .join("")
-      );
-
-      if (iteration >= text.length) clearInterval(interval);
-      iteration += 1 / 3; // Speed: Higher denominator = slower scramble
-    }, 30);
-
-    return () => clearInterval(interval);
-  }, [trigger, text]);
-
-  return (
-    <motion.span
-      className={className}
-      onViewportEnter={() => setTrigger(true)} // Triggers when scrolled into view
-      viewport={{ once: true }} // Only runs once
-    >
-      {display}
-    </motion.span>
-  );
-};
 
 const Work = () => {
   const revealVars = {

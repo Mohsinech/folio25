@@ -20,10 +20,10 @@ export const projects: Project[] = [
   //   imageUrl: "/assets/projects/portfolio.webp",
   //   projectUrl: "/work/portfolio-2024",
   // },
-  // {
-  //   id: 3,
-  //   title: "Ayourluxe",
-  //   imageUrl: "/assets/projects/ayourluxe.webp",
-  //   projectUrl: "/work/ayourluxe",
-  // },
+  {
+    id: 3,
+    title: "Ayourluxe",
+    imageUrl: "/assets/projects/ayourluxe.webp",
+    projectUrl: "/work/ayourluxe",
+  },
 ];

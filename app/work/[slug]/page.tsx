@@ -1,7 +1,11 @@
-import { projects } from "../data";
+import { projects } from "./data";
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import { Metadata } from "next";
+import styles from "./slug.module.css";
+import { AnimatedText, FadeInUp } from "@/components/ui/ui";
+import ParallaxHeader from "@/components/ParallaxHeader/ParallaxHeader";
+import ParallaxImage from "@/utils/ParallaxImage/ParallaxImage";
+import ParallaxImages from "@/utils/ParallaxImages/ParallaxImages";
 
 export async function generateStaticParams() {
   return projects.map((project) => ({
@@ -38,16 +42,120 @@ export default async function ProjectSlugPage({ params }: ProjectPageProps) {
   if (!project) return notFound();
 
   return (
-    <div style={{ padding: 32 }}>
-      <h1>{project.title}</h1>
-      <Image
-        src={project.imageUrl}
-        alt={project.title}
-        width={600}
-        height={400}
-        priority // Add priority since this is the main image (LCP)
+    <main className={styles.projectPage}>
+      <section className={styles.projectDetails}>
+        <div className={styles.content}>
+          <div className={styles.col}>
+            {/* WRAPPER ADDED FOR ALIGNMENT */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "flex-start",
+                gap: "0.2em",
+              }}
+            >
+              <AnimatedText
+                className={styles.animatedText}
+                text={project.title}
+              />
+              {project.hasCopyright && (
+                <FadeInUp delay={0.8}>
+                  <sup
+                    style={{
+                      fontSize: "clamp(14px, 2vw, 24px)",
+                      fontWeight: "300",
+                      marginTop: "0.1em",
+                      display: "block",
+                    }}
+                  >
+                    ©
+                  </sup>
+                </FadeInUp>
+              )}
+            </div>
+
+            <FadeInUp delay={1}>
+              <h4>
+                Project — <span>/{project.title}</span>
+              </h4>
+            </FadeInUp>
+          </div>
+
+          <div className={styles.footerIntro}>
+            {/* 3. Description (Fade In Up - Delay 0.4s) */}
+            <FadeInUp delay={1}>
+              <p> {project.ProjectOverview}</p>
+            </FadeInUp>
+          </div>
+        </div>
+      </section>
+
+      {/* */}
+      <ParallaxHeader
+        imageUrl={project.introImage}
+        title={project.title}
+        hasCopyright={project.hasCopyright}
       />
-      <p>Project slug: {slug}</p>
-    </div>
+
+      {/*  */}
+      <section className={styles.projectVid}>
+        {/* Header */}
+        <div className={styles.header}>
+          <div className={styles.vidProject}></div>
+          <div className={styles.uiKit}></div>
+        </div>
+        {/* Content Header */}
+        <div className={styles.contentHeader}>
+          {/* context */}
+          <div className={styles.context}>
+            <h4>Project Context</h4>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Excepturi, quibusdam voluptates. A aspernatur blanditiis harum.
+              Consequuntur laboriosam eum necessitatibus doloribus minima fuga
+              cupiditate numquam perspiciatis atque reiciendis, dolore quo in?
+            </p>
+          </div>
+
+          {/* mission */}
+          <div className={styles.mission}>
+            <h4>My Mission</h4>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Excepturi, quibusdam voluptates. A aspernatur blanditiis harum.
+              Consequuntur laboriosam eum necessitatibus doloribus minima fuga
+              cupiditate numquam perspiciatis atque reiciendis, dolore quo in?
+            </p>
+          </div>
+
+          {/* Duration */}
+          <div className={styles.role}>
+            <h4>Role</h4>
+            <p>Design & Development</p>
+          </div>
+        </div>
+
+        {/* Mid */}
+        <div className={styles.midProject}>
+          <div className={styles.firstScreen}></div>
+        </div>
+
+        <div className={styles.midProjectWhite}>
+          <div className={styles.secondScreen}></div>
+        </div>
+      </section>
+
+      {/* Parallax Image */}
+      <ParallaxImage
+        parallaxImage={project.parallaxImage ?? ""}
+        title={project.title}
+      />
+
+      {/* Mobiles */}
+      <ParallaxImages
+        parallaxImages={project.parallaxImages ?? []}
+        title={project.title}
+      />
+    </main>
   );
 }
