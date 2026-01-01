@@ -10,6 +10,7 @@ import {
   ProjectMarquee,
 } from "@/utils";
 import { ParallaxHeader } from "@/components";
+import Image from "next/image";
 
 export async function generateStaticParams() {
   return projects.map((project) => ({
@@ -113,8 +114,25 @@ export default async function ProjectSlugPage({ params }: ProjectPageProps) {
       <section className={styles.projectVid}>
         {/* Header */}
         <div className={styles.header}>
-          <div className={styles.vidProject}></div>
-          <div className={styles.uiKit}></div>
+          <div className={styles.vidProject}>
+            <video
+              src={project.vid1}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className={styles.vid}
+            />
+          </div>
+          <div className={styles.uiKit}>
+            <div className={styles.imgWrapper}>
+              <Image
+                src={project.showCase1}
+                alt={`${project.title} Showcase`}
+                fill
+              />
+            </div>
+          </div>
         </div>
         {/* Content Header */}
         <div className={styles.contentHeader}>

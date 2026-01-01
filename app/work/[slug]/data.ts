@@ -12,6 +12,8 @@ export interface Project {
   parallaxImage?: string;
   parallaxImages?: string[];
   ProjectUrl?: string;
+  vid1: string;
+  showCase1: string;
 }
 
 export const projects: Project[] = [
@@ -33,6 +35,8 @@ export const projects: Project[] = [
       "/assets/projects/media/hyne/mobile/third.webp",
     ],
     ProjectUrl: "https://hyne.com/",
+    vid1: "/assets/projects/media/hyne/hyneVid1.mp4",
+    showCase1: "/assets/projects/media/hyne/HyneShowcase.webp",
   },
   {
     id: 3,
@@ -43,6 +47,8 @@ export const projects: Project[] = [
     projectUrl: "/work/ayourluxe",
 
     introImage: "/assets/projects/media/ayourluxe/ayourIntro.webp",
+    vid1: "/assets/projects/media/ayourluxe/ayourluxeVid.mp4",
+    showCase1: "/assets/projects/media/ayourluxe/ayourShowcase.webp",
   },
   // {
   //   id: 2,
