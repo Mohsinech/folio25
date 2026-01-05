@@ -3,13 +3,7 @@
 import styles from "./header.module.css";
 import ScrambleLink from "@/utils/ScrambleText/ScrambleText";
 import { motion, useScroll, useTransform } from "framer-motion";
-
-// 1. Define your links here
-const NAV_LINKS = [
-  { label: "INTRO", href: "/" },
-  { label: "WORK", href: "/work" },
-  { label: "INQUIRY", href: "/contact" },
-];
+import { NAV_LINKS } from "./data";
 
 // 2. Define the animation once
 const revealVars = {

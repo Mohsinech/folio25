@@ -12,32 +12,21 @@
   align-items: center;
 }
 
-/* centerContent:
-   This is the flex container. 
-   When the form width is 0, 'justify-content: center' puts the text in the middle.
-   When the form grows, this container handles the spacing.
-*/
 .centerContent {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
   width: 100%;
-  gap: 4rem; /* The gap between Text and Form when open */
+  padding: 4rem;
+  gap: 8rem;
 }
 
-/* content:
-   Added white-space: nowrap and flex-shrink: 0.
-   This ensures the text block slides as one solid unit without re-wrapping.
-*/
 .content {
   display: flex;
   flex-direction: column;
-  text-align: center;
-  align-items: center;
+  text-align: start;
   white-space: nowrap;
-  flex-shrink: 0;
-  z-index: 10;
 }
 
 .content h1 {
@@ -64,50 +53,113 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 350px;
+  width: fit-content;
   background: transparent;
 }
 
-.form input,
-.form textarea {
-  width: 100%;
-  padding: 1rem 0;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  color: #fff;
+.formText {
   font-family: "mon", sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.4;
+  color: #f1f1f1;
+  letter-spacing: -0.025rem;
+  width: 90%;
+}
+
+.formText input,
+.formText select {
+  width: auto;
+  padding: 0.2rem 0.6rem;
+  font-size: 1.5rem;
+  color: #ccc;
+  font-family: "mon", sans-serif;
+  border: none;
+  background: transparent;
   outline: none;
-  transition: border-color 0.3s ease;
+
+  field-sizing: content;
+  min-width: 3ch; /* Prevents it from disappearing if empty */
 }
 
-.form input:focus,
-.form textarea:focus {
-  border-bottom: 1px solid #fff;
+.formText input:nth-child(1),
+.formText input:nth-child(3),
+.formText input:nth-child(5) {
+  padding-left: 0.5rem;
 }
 
-.form button {
-  margin-top: 1rem;
-  padding: 1rem 2rem;
-  background: #fff;
-  color: #000;
+.formText input:focus {
+  outline: none;
+  border-color: #000;
+}
+
+.formText input::placeholder {
+  transition: all 0.5s cubic-bezier(0.65, 0.05, 0, 1);
+}
+
+.formText input:focus::placeholder {
+  transform: translateX(20px);
+  opacity: 0;
+}
+
+.formText select option {
+  background: rgb(34, 34, 34);
+  color: #ccc;
+  padding: 0.5rem;
+}
+
+.formText textarea {
+  width: 80%; /* Make it take the full width available */
+  display: block; /* Force it to its own line */
+  margin-top: 1rem; /* Add space above it */
+  background: transparent;
   border: none;
-  border-radius: 50px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Subtle underline */
+  color: #ccc;
   font-family: "mon", sans-serif;
+  font-size: 1.5rem;
+  resize: none; /* Hide the ugly resize handle */
+  outline: none;
+  padding: 0.5rem 0;
+
+  /* Modern CSS to make it grow with text (if you want it to start small) */
+  field-sizing: content;
+  min-height: 1.5em;
+}
+
+.formText textarea:focus {
+  border-bottom-color: #fff; /* Highlight line on focus */
+}
+
+.formText textarea::placeholder {
+  transition: all 0.5s cubic-bezier(0.65, 0.05, 0, 1);
+}
+
+.formText textarea:focus::placeholder {
+  transform: translateX(20px);
+  opacity: 0;
+}
+
+.formText .submitButton {
+  margin-top: 1.5rem;
+  padding: 0.7rem 1.5rem;
+  font-size: 1.2rem;
+  font-family: "mon", sans-serif;
+  color: #f1f1f1;
+  background: #333;
+  border: none;
   cursor: pointer;
-  font-weight: 600;
+  transition: background 0.3s;
 }
 
 /* Footer Styles */
 .footerContent {
   width: 100%;
-  padding: 2rem;
+  padding: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   font-family: "mon", sans-serif;
   font-size: 0.85rem;
-  color: #989898;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -115,7 +167,7 @@
 
 .socials ul {
   display: flex;
-  gap: 2rem;
+  align-items: center;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -125,10 +177,17 @@
   text-decoration: none;
   color: inherit;
   transition: color 0.3s;
+  color: #f1f1f1;
+  font-family: "mon", sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: -0.025rem;
 }
 
-.socials a:hover {
-  color: #fff;
+.footerContent p {
+  color: #6a6a6a;
+  font-family: "mori", sans-serif;
+  letter-spacing: -0.025rem;
+  font-size: 0.8rem;
 }
 
 .fillForm {
