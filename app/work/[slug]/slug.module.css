@@ -147,13 +147,13 @@
 .role {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2rem;
 }
 
 .context h4,
 .mission h4,
 .role h4 {
-  color: var(--animatedTextColor);
+  color: var(--secondaryColor);
   font-size: 1.5rem;
   line-height: 1.2;
   text-transform: uppercase;
@@ -164,67 +164,82 @@
 .context p,
 .mission p,
 .role p {
-  color: var(--secondaryColor);
+  color: var(--animatedTextColor);
   font-size: 0.85rem;
-  line-height: 1.6;
+  line-height: 1.5;
   font-family: "roobert", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: -0.015rem;
+  letter-spacing: -0.025rem;
 }
 
-/*  */
+/* ProjectVid Container */
 .projectVid {
   width: 100%;
-  height: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
-
   flex-direction: column;
   gap: 4rem;
+  padding: 4rem 0;
 }
 
-.projectVid .header {
+/* --- HEADER LAYOUT --- */
+.header {
   width: 100%;
-  height: auto;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  /* Removed height: 70vh entirely */
 }
 
-.header .vidProject {
-  flex: 1;
-  height: 80dvh;
-  background-color: #e2e8f0;
+@media (min-width: 768px) {
+  .header {
+    flex-direction: row;
+    /* align-items: stretch; -> Makes both gray boxes equal height */
+    align-items: stretch;
+  }
 }
 
-.header .uiKit {
+/* --- THE GRAY BOX (Parent) --- */
+.vidProject,
+.uiKit {
   flex: 1;
-  height: 80dvh;
-  width: 100%;
-  overflow: hidden;
-  background-color: #999;
+  background-color: #ded3d3;
+  padding: 3rem; /* Padding stays here */
+
+  /* IMPORTANT: Remove aspect-ratio from here. 
+     Let the content inside dictate the shape. */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.uiKit .imgWrapper {
+/* --- THE CONTENT WRAPPER --- */
+.mediaWrapper {
   position: relative;
   width: 100%;
+
+  /* 1. REMOVED aspect-ratio */
+  /* aspect-ratio: 16 / 10; */
+
+  /* 2. ADDED height: 100% 
+     This tells the wrapper to fill the entire height of the gray box,
+     which is already being stretched to match the Video height on the left. */
   height: 100%;
-  border-radius: 0.5rem;
+
+  overflow: hidden;
+  box-shadow:
+    0 10px 30px -10px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.05);
+  transform: translateZ(0);
 }
 
-.uiKit .imgWrapper img {
-  object-fit: cover;
-  object-position: center;
-}
-
-.header .vidProject video {
+/* --- THE MEDIA ITEM --- */
+.mediaItem {
   width: 100%;
   height: 100%;
-  object-position: center;
+  display: block;
+
+  /* 3. CONTAIN ensures the image scales down to fit the height 
+        without cutting anything off, even if the ratios don't match yet. */
+  object-fit: cover;
+  object-position: top;
 }
 
 /*  */
@@ -240,9 +255,15 @@
 }
 
 .midProject .firstScreen {
-  width: 85%;
-  height: 80dvh;
-  background-color: teal;
+  width: 90%;
+  height: 95dvh;
+  border-radius: 0.5rem;
+}
+
+.firstScreen video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: 0.5rem;
 }
 

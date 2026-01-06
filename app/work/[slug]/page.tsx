@@ -11,6 +11,7 @@ import {
 } from "@/utils";
 import { ParallaxHeader } from "@/components";
 import Image from "next/image";
+import { MacbookFrame } from "@/components/MacbookFrame/MacbookFrame";
 
 export async function generateStaticParams() {
   return projects.map((project) => ({
@@ -27,7 +28,7 @@ export async function generateMetadata({
     (p) => p.projectUrl.replace("/work/", "") === params.slug
   );
   return {
-    title: project ? project.title : `${projects[0].title} | Mohssine Chedgane`,
+    title: project ? project.title : `${projects[0].title} • Mohssine Chedgane`,
   };
 }
 
@@ -114,22 +115,29 @@ export default async function ProjectSlugPage({ params }: ProjectPageProps) {
       <section className={styles.projectVid}>
         {/* Header */}
         <div className={styles.header}>
+          {/* LEFT SIDE: VIDEO (Clean & Floating) */}
           <div className={styles.vidProject}>
-            <video
-              src={project.vid1}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className={styles.vid}
-            />
+            <div className={styles.mediaWrapper}>
+              <video
+                src={project.vid1} // Ensure this links to .webm
+                poster={project.showCase1} // Prevents empty flash
+                autoPlay
+                loop
+                muted
+                playsInline
+                className={styles.mediaItem}
+              />
+            </div>
           </div>
+
+          {/* RIGHT SIDE: UI IMAGE (Matches Video Style) */}
           <div className={styles.uiKit}>
-            <div className={styles.imgWrapper}>
+            <div className={styles.mediaWrapper}>
               <Image
                 src={project.showCase1}
                 alt={`${project.title} Showcase`}
                 fill
+                className={styles.mediaItem}
               />
             </div>
           </div>
@@ -139,35 +147,35 @@ export default async function ProjectSlugPage({ params }: ProjectPageProps) {
           {/* context */}
           <div className={styles.context}>
             <h4>Project Context</h4>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Excepturi, quibusdam voluptates. A aspernatur blanditiis harum.
-              Consequuntur laboriosam eum necessitatibus doloribus minima fuga
-              cupiditate numquam perspiciatis atque reiciendis, dolore quo in?
-            </p>
+            <p>{project.projectContext}</p>
           </div>
 
           {/* mission */}
           <div className={styles.mission}>
             <h4>My Mission</h4>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Excepturi, quibusdam voluptates. A aspernatur blanditiis harum.
-              Consequuntur laboriosam eum necessitatibus doloribus minima fuga
-              cupiditate numquam perspiciatis atque reiciendis, dolore quo in?
-            </p>
+            <p>{project.missionStatement}</p>
           </div>
 
           {/* Duration */}
           <div className={styles.role}>
             <h4>Role</h4>
-            <p>Design & Development</p>
+            <p>{project.role}</p>
           </div>
         </div>
 
         {/* Mid */}
         <div className={styles.midProject}>
-          <div className={styles.firstScreen}></div>
+          <div className={styles.firstScreen}>
+            <video
+              src={project.vid2}
+              poster={project.showCase1}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className={styles.mediaItem}
+            />
+          </div>
         </div>
 
         <div className={styles.midProjectWhite}>
