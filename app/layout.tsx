@@ -3,6 +3,7 @@ import "@/styles/globals.css";
 import { ViewTransitions } from "next-view-transitions";
 import { Header } from "@/components/layouts";
 import { SmoothScroll } from "@/utils";
+import MobileHeader from "@/components/screens/mobileH/Header";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,7 +19,18 @@ export default function RootLayout({
     <ViewTransitions>
       <html lang="en">
         <body>
-          <Header />
+          <header>
+            {/* Logic: Hide on mobile, show on desktop */}
+            <div className="hidden lg:block">
+              <Header />
+            </div>
+
+            {/* Logic: Show on mobile, hide on desktop */}
+            <div className="block -lg:hidden">
+              <MobileHeader />
+            </div>
+          </header>
+
           <SmoothScroll />
           {children}
         </body>

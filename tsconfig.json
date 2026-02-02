@@ -31,7 +31,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts"
+    "**/*.mts",
+    "app/import Link from 'next/link'   export default function NotFound() {   return (     <div>       <h2>Not Found</h2>       <p>Could not find requested resource</p>       <Link href=\"/\">Return Home</Link>     </div>   ) }"
   ],
   "exclude": ["node_modules"]
 }

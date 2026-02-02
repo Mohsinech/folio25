@@ -138,7 +138,7 @@
   height: auto;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 5rem;
+  gap: 3rem;
   padding: 0 2rem;
 }
 
@@ -147,7 +147,7 @@
 .role {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2.5rem;
 }
 
 .context h4,
@@ -157,7 +157,7 @@
   font-size: 1.5rem;
   line-height: 1.2;
   text-transform: uppercase;
-  font-family: "mori", sans-serif;
+  font-family: "roobert", sans-serif;
   letter-spacing: -0.025rem;
 }
 
@@ -165,10 +165,10 @@
 .mission p,
 .role p {
   color: var(--animatedTextColor);
-  font-size: 0.85rem;
+  font-size: 1rem;
   line-height: 1.5;
-  font-family: "roobert", sans-serif;
-  letter-spacing: -0.025rem;
+  font-family: "mon", sans-serif;
+  letter-spacing: 0.025rem;
 }
 
 /* ProjectVid Container */
@@ -256,15 +256,15 @@
 
 .midProject .firstScreen {
   width: 90%;
-  height: 95dvh;
+  height: 80dvh;
   border-radius: 0.5rem;
 }
 
-.firstScreen video {
+.firstScreen video,
+.secondScreen video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 0.5rem;
 }
 
 .midProjectWhite {
@@ -272,16 +272,16 @@
 }
 
 .midProjectWhite .secondScreen {
-  width: 85%;
+  width: 90%;
   height: 80dvh;
-  background-color: red;
   border-radius: 0.5rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
 }
 
 /*  */
 .parallax {
   overflow: hidden;
-  margin-top: -3rem;
+  margin-top: -7rem;
   width: 100%;
   height: 130dvh;
   position: relative;
@@ -353,12 +353,10 @@
   padding: 2rem 0;
   background-color: #f1f1f1;
   /* border: 2px solid #e1e1e1; */
-  overflow: hidden;
 
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
 }
 
 .motionMarquee .marquee {

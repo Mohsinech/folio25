@@ -11,7 +11,6 @@ import {
 } from "@/utils";
 import { ParallaxHeader } from "@/components";
 import Image from "next/image";
-import { MacbookFrame } from "@/components/MacbookFrame/MacbookFrame";
 
 export async function generateStaticParams() {
   return projects.map((project) => ({
@@ -27,8 +26,14 @@ export async function generateMetadata({
   const project = projects.find(
     (p) => p.projectUrl.replace("/work/", "") === params.slug
   );
+  const index = projects.findIndex(
+    (p) => p.projectUrl.replace("/work/", "") === params.slug
+  );
+  const fallbackTitle = projects[index !== -1 ? index : 0]?.title ?? "Project";
   return {
-    title: project ? project.title : `${projects[0].title} • Mohssine Chedgane`,
+    title: project
+      ? `${project.title} • Mohssine Chedgane`
+      : `${fallbackTitle} • Mohssine Chedgane`,
   };
 }
 
@@ -179,7 +184,17 @@ export default async function ProjectSlugPage({ params }: ProjectPageProps) {
         </div>
 
         <div className={styles.midProjectWhite}>
-          <div className={styles.secondScreen}></div>
+          <div className={styles.secondScreen}>
+            <video
+              src={project.vid3}
+              poster={project.showCase1}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className={styles.mediaItem}
+            />
+          </div>
         </div>
       </section>
 

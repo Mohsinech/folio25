@@ -20,7 +20,7 @@ const ProjectMarquee: React.FC<ProjectMarqueeProps> = ({
       <motion.a
         className={styles.projectUrlLink}
         href={ProjectUrl}
-        initial={{ y: 100, skewY: 2 }}
+        initial={{ y: -100, skewY: 2 }}
         whileInView={{
           y: 0,
           skewY: 0,

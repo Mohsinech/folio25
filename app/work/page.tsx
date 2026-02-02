@@ -2,7 +2,7 @@
 
 import ProjectCard from "@/components/ProjectCard/ProjectCard";
 import styles from "./page.module.css";
-import { motion } from "framer-motion";
+import { motion, useTransform, useScroll } from "framer-motion";
 import { projects } from "./data";
 
 const Work = () => {
@@ -26,10 +26,19 @@ const Work = () => {
 
   const text = "WORK(10)";
 
+  //
+  const scrollYProgress = useScroll().scrollYProgress;
+  const fadeOut = useTransform(scrollYProgress, [0, 1], [1, 0]);
+
   return (
     <main className={styles.main}>
       <section className={styles.work}>
-        <div className={styles.content}>
+        <motion.div
+          style={{
+            opacity: fadeOut,
+          }}
+          className={styles.content}
+        >
           <h1>
             {text.split("").map((char, index) => (
               <span
@@ -48,17 +57,16 @@ const Work = () => {
               </span>
             ))}
           </h1>
-        </div>
+        </motion.div>
 
         <section className={styles.desc}>
           <h1>
-            <span> I truly</span> believe that good work needs a dedicated team,
-            less talking and more doing. Good research leads to effective
-            design, better tech stacks and tailor-made outcomes. The importance
-            of daring, innovative and unique projects is at the heart of our
-            client collaboration process. That’s why, we’ve said goodbye to
-            traditional agency silos to develop the full multidisciplinary
-            potential of our teams.
+            <span>I’m a </span> developer who values shipping code over sitting
+            in meetings. I combine deep technical research with an agile,
+            multidisciplinary approach to build unique digital products. I’ve
+            moved away from rigid structures to offer a more direct, innovative
+            way of working. If you’re looking for a dedicated partner to turn
+            complex problems into clean, effective code, let’s build something.
           </h1>
         </section>
 

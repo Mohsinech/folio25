@@ -26,7 +26,6 @@ const Home = () => {
       <section className={styles.hero}>
         <div className={styles.content}>
           <div className={styles.headings}>
-            {/* BLOCK ONE (Indices 0-3) */}
             <div className={styles.titlesOne}>
               <div className="overflow-hidden">
                 <motion.h1
@@ -71,10 +70,7 @@ const Home = () => {
                   high-performance digital experiences.
                 </motion.h1>
               </div>
-            </div>
 
-            {/* BLOCK TWO (Indices 4-8) */}
-            <div className={styles.titlesTwo}>
               <div className="overflow-hidden">
                 <motion.h1
                   custom={4}
@@ -85,7 +81,9 @@ const Home = () => {
                   share the journey, and help others
                 </motion.h1>
               </div>
+            </div>
 
+            <div className={styles.titlesTwo}>
               <div className="overflow-hidden">
                 <motion.h1
                   custom={5}
@@ -117,11 +115,10 @@ const Home = () => {
                 >
                   <span>
                     <ScrambleLink
-                      label="Projects"
+                      label="Brands"
                       href="/work"
                       className={styles.link}
                     />
-                    <sup>9</sup>
                   </span>{" "}
                   that connect code and{" "}
                 </motion.h1>
@@ -137,13 +134,28 @@ const Home = () => {
                   community.
                 </motion.h1>
               </div>
+
+              <div className="overflow-hidden">
+                <motion.h1
+                  custom={9}
+                  variants={revealVars}
+                  initial="initial"
+                  animate="animate"
+                >
+                  Have an idea?{" "}
+                  <span>
+                    <ScrambleLink
+                      label="Let's talk"
+                      href="/contact"
+                      className={styles.link}
+                    />
+                  </span>{" "}
+                </motion.h1>
+              </div>
             </div>
           </div>
 
-          {/* LISTS (Indices 9+) */}
-          {/* LISTS (Updated Indices for Overlap) */}
           <div className={styles.lists}>
-            {/* 1. CLIENTS - Starts at index 2 (Parallel with main text) */}
             <div className={styles.listOne}>
               <div className="overflow-hidden">
                 <motion.h3
@@ -231,7 +243,6 @@ const Home = () => {
               </ul>
             </div>
 
-            {/* 2. COLLABORATE - Also starts at index 2 (Flows parallel to Clients) */}
             <div className={styles.listTwo}>
               <div className="overflow-hidden">
                 <motion.h3
@@ -255,7 +266,7 @@ const Home = () => {
                   >
                     <ScrambleLink
                       label="LinkedIn"
-                      href="#linkedin"
+                      href="https://www.linkedin.com/in/mohssine-chedgane/"
                       className={styles.link}
                     />
                   </motion.div>
@@ -269,7 +280,7 @@ const Home = () => {
                   >
                     <ScrambleLink
                       label="Instagram"
-                      href="#instagram"
+                      href="https://www.instagram.com/milcodestudio/"
                       className={styles.link}
                     />
                   </motion.div>
@@ -283,7 +294,7 @@ const Home = () => {
                   >
                     <ScrambleLink
                       label="Email"
-                      href="#email"
+                      href="mailto:chedganemouhssine@gmail.com"
                       className={styles.link}
                     />
                   </motion.div>
@@ -297,7 +308,7 @@ const Home = () => {
                   >
                     <ScrambleLink
                       label="WhatsApp"
-                      href="#whatsapp"
+                      href="https://wa.me/212713086047"
                       className={styles.link}
                     />
                   </motion.div>
@@ -311,8 +322,15 @@ const Home = () => {
                   initial="initial"
                   animate="animate"
                 >
-                  HAVE A PROJECT IN MINDE? <br />
-                  BOOK A FREE CONSULTATION.
+                  HAVE A PROJECT IN MIND? <br />
+                  BOOK A{" "}
+                  <span>
+                    <ScrambleLink
+                      label="45 min CONSULTATION."
+                      href="/contact"
+                      className={styles.link}
+                    />
+                  </span>{" "}
                 </motion.p>
               </div>
             </div>
