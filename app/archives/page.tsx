@@ -4,8 +4,8 @@ import React from "react";
 import styles from "./page.module.css";
 import { ScrambleLink } from "@/utils";
 import { archivesData } from "./data";
-import { Archive } from "@/components";
 import { useScroll, useTransform, motion } from "framer-motion";
+import ArchiveList from "@/components/Archive/Archive";
 
 const Page = () => {
   const scrollYProgress = useScroll().scrollYProgress;
@@ -79,7 +79,7 @@ const Page = () => {
           </div>
 
           {archivesData.map((archive) => (
-            <Archive key={archive.id} {...archive} />
+            <ArchiveList key={archive.id} {...archive} />
           ))}
         </div>
       </section>

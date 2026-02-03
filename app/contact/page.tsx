@@ -40,7 +40,7 @@ const Contact = () => {
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    >,
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -94,87 +94,89 @@ const Contact = () => {
   return (
     <main className={styles.main}>
       <section className={styles.section}>
-        <div className={styles.centerContent}>
-          {/* LEFT SIDE CONTENT */}
+        <motion.div
+          variants={revealVars}
+          initial="initial"
+          animate="animate"
+          className={styles.centerContent}
+        >
           <motion.div className={styles.content}>
             <motion.div
               className="overflow-hidden"
               transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
             >
-              <h1>
-                {phone.split("").map((char, index) => (
-                  <span
-                    key={index}
-                    style={{ display: "inline-block", overflow: "hidden" }}
-                  >
-                    <motion.span
-                      custom={index}
-                      variants={revealVars}
-                      initial="initial"
-                      animate="animate"
-                      style={{ display: "inline-block" }}
+              <Link
+                target="_blank"
+                rel="noopener noreferrer"
+                href={`tel:${phone}`}
+              >
+                <h1>
+                  {phone.split("").map((char, index) => (
+                    <span
+                      key={index}
+                      style={{ display: "inline-block", overflow: "hidden" }}
                     >
-                      {char === " " ? "\u00A0" : char}
-                    </motion.span>
-                  </span>
-                ))}
-              </h1>
+                      <motion.span style={{ display: "inline-block" }}>
+                        {char === " " ? "\u00A0" : char}
+                      </motion.span>
+                    </span>
+                  ))}
+                </h1>
+              </Link>
             </motion.div>
 
             <motion.div className="overflow-hidden">
-              <h1>
-                {emailAddr.split("").map((char, index) => (
-                  <span
-                    key={index}
-                    style={{ display: "inline-block", overflow: "hidden" }}
-                  >
-                    <motion.span
-                      custom={index}
-                      variants={revealVars}
-                      initial="initial"
-                      animate="animate"
-                      style={{ display: "inline-block" }}
+              <Link
+                target="_blank"
+                rel="noopener noreferrer"
+                href={`mailto:${emailAddr}`}
+              >
+                <h1>
+                  {emailAddr.split("").map((char, index) => (
+                    <span
+                      key={index}
+                      style={{ display: "inline-block", overflow: "hidden" }}
                     >
-                      {char === " " ? "\u00A0" : char}
-                    </motion.span>
-                  </span>
-                ))}
-              </h1>
+                      <motion.span style={{ display: "inline-block" }}>
+                        {char === " " ? "\u00A0" : char}
+                      </motion.span>
+                    </span>
+                  ))}
+                </h1>
+              </Link>
             </motion.div>
 
             <motion.div className="overflow-hidden">
-              <h1>
-                {call.split("").map((char, index) => (
-                  <span
-                    key={index}
-                    style={{ display: "inline-block", overflow: "hidden" }}
-                  >
-                    <motion.span
-                      custom={index}
-                      variants={revealVars}
-                      initial="initial"
-                      animate="animate"
-                      style={{ display: "inline-block" }}
+              <Link
+                href="https://cal.com/muhsench/45minconsultation?duration=45&overlayCalendar=true"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <h1>
+                  {call.split("").map((char, index) => (
+                    <span
+                      key={index}
+                      style={{ display: "inline-block", overflow: "hidden" }}
                     >
-                      {char === " " ? "\u00A0" : char}
-                    </motion.span>
-                  </span>
-                ))}
-              </h1>
+                      <motion.span style={{ display: "inline-block" }}>
+                        {char === " " ? "\u00A0" : char}
+                      </motion.span>
+                    </span>
+                  ))}
+                </h1>
+              </Link>
             </motion.div>
-            <p className={styles.fillForm}>Or fill the quick form.</p>
+            <motion.p className={styles.fillForm}>
+              Or fill the quick form.
+            </motion.p>
           </motion.div>
 
-          {/* RIGHT SIDE FORM */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 2, ease: [0.65, 0.05, 0, 1], delay: 1 }}
             className={styles.formWrapper}
           >
-            {/* FIX: Moved everything INSIDE the form tag.
-               Now "Enter" key works and semantics are correct.
-            */}
             <motion.form className={styles.form} onSubmit={handleSubmit}>
               <h1 className={styles.formText}>
                 Hi there, my name is{" "}
@@ -278,26 +280,49 @@ const Contact = () => {
               </h1>
             </motion.form>
           </motion.div>
-        </div>
+        </motion.div>
 
         {/* Footer Content */}
-        <div className={styles.footerContent}>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 2, ease: [0.65, 0.05, 0, 1] }}
+          className={styles.footerContent}
+        >
           <p>All rights reserved &copy; 2026</p>
           <div className={styles.socials}>
             <ul>
               <li>
-                <Link href="#li">LinkedIn</Link>
+                <Link
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://www.linkedin.com/in/mohssine-chedgane/"
+                >
+                  LinkedIn
+                </Link>
               </li>
               <li>
-                <Link href="#tw">/Twitter(x)</Link>
+                <Link
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://x.com/muhsench"
+                >
+                  /Twitter(x)
+                </Link>
               </li>
               <li>
-                <Link href="#ig">/Instagram</Link>
+                <Link
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://www.instagram.com/milcodestudio/"
+                >
+                  /Instagram
+                </Link>
               </li>
             </ul>
           </div>
           <p>Site by Mohssine Chedgane</p>
-        </div>
+        </motion.div>
       </section>
     </main>
   );

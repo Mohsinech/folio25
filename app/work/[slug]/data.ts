@@ -42,7 +42,7 @@ export const projects: Project[] = [
       "/assets/projects/media/hyne/mobile/second.webp",
       "/assets/projects/media/hyne/mobile/third.webp",
     ],
-    ProjectUrl: "https://hyne.com/",
+    ProjectUrl: "https://hyne.vercel.app/",
     vid1: "/assets/projects/media/hyne/vids/hyneVid.webm",
     vide1Backup: "/assets/projects/media/hyne/vids/hyneVidBackup.mp4",
     showCase1: "/assets/projects/media/hyne/HyneShowcase1.webp",

@@ -16,7 +16,7 @@ interface ArchiveProps {
   num: string;
 }
 
-const Archive = ({
+const ArchiveList = ({
   id,
   title,
   client,
@@ -45,4 +45,4 @@ const Archive = ({
   );
 };
 
-export default Archive;
+export default ArchiveList;

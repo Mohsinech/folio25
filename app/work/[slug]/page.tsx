@@ -8,8 +8,8 @@ import {
   ParallaxImage,
   ParallaxImages,
   ProjectMarquee,
-} from "@/utils";
-import { ParallaxHeader } from "@/components";
+} from "@/utils/index";
+import { ParallaxHeader } from "@/components/index";
 import Image from "next/image";
 
 export async function generateStaticParams() {
@@ -21,13 +21,14 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
+  const { slug } = await params;
   const project = projects.find(
-    (p) => p.projectUrl.replace("/work/", "") === params.slug
+    (p) => p.projectUrl.replace("/work/", "") === slug,
   );
   const index = projects.findIndex(
-    (p) => p.projectUrl.replace("/work/", "") === params.slug
+    (p) => p.projectUrl.replace("/work/", "") === slug,
   );
   const fallbackTitle = projects[index !== -1 ? index : 0]?.title ?? "Project";
   return {
@@ -47,7 +48,7 @@ export default async function ProjectSlugPage({ params }: ProjectPageProps) {
 
   // 1. Find the INDEX first (instead of .find())
   const currentIndex = projects.findIndex(
-    (p) => p.projectUrl.replace("/work/", "") === slug
+    (p) => p.projectUrl.replace("/work/", "") === slug,
   );
 
   // 2. If index is -1, the project doesn't exist -> 404

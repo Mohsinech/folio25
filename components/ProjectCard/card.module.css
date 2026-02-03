@@ -80,7 +80,8 @@
   width: 100px;
 
   height: 30px;
-  background-color: #a6ff00;
+  background-color: #455ce9;
+  border: 1px solid #f1f1f1;
   /* background-color: #121212; */
   border-radius: 0.5rem;
   pointer-events: none;
@@ -102,7 +103,7 @@
 }
 
 .marquee {
-  width: 200%; /* Wider than container to allow sliding */
+  width: 200%;
   white-space: nowrap;
   position: absolute;
 }
@@ -112,8 +113,8 @@
   font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
-  color: #121212;
-  font-family: sans-serif;
+  color: #f1f1f1;
+  font-family: "jet", sans-serif;
 }
 
 .track span {

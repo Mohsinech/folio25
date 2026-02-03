@@ -1,6 +1,6 @@
 .sliderContainer {
   position: absolute;
-  bottom: -5rem;
+  bottom: -10rem;
   display: flex;
   gap: 0.5rem;
 }
@@ -13,16 +13,68 @@
 
 .wrapper {
   display: flex;
-  flex-shrink: 0; /* Prevents squishing */
-  padding-right: 10px; /* Gap between the two loops */
-  gap: 10px; /* Gap between individual projects */
+  flex-shrink: 0;
+  padding-right: 10px;
+  gap: 5px;
 }
 
-/* Your red project box style */
 .project {
-  width: 400px; /* Needs a fixed min-width to work well */
-  height: 200px;
-  background-color: #f1f1f1;
+  width: 410px;
+  height: 300px;
+  /* background-color: #f1f1f1; */
   flex-shrink: 0;
   border-radius: 0.2rem;
+  position: relative;
+  overflow: hidden;
+  transform-origin: bottom center;
+  cursor: pointer;
+}
+
+/*  */
+/* --- CURSOR STYLES --- */
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100px;
+
+  height: 30px;
+  /* background-color: rgb(166, 255, 0); */
+  background-color: #455ce9;
+  border-radius: 0.5rem;
+  pointer-events: none;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+}
+
+.cursorInner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.marquee {
+  width: 200%; /* Wider than container to allow sliding */
+  white-space: nowrap;
+  position: absolute;
+}
+
+.track {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #f1f1f1;
+  font-family: "jet", sans-serif;
+}
+
+.track span {
+  padding-right: 10px;
 }

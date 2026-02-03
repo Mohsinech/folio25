@@ -1,6 +1,11 @@
 import Galaxy from "@/components/Galaxy";
 import styles from "./not.module.css";
 import { ScrambleLink } from "@/utils";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Oops! someone is lost • Mohssine Chedgane",
+};
 
 export default function NotFound() {
   return (

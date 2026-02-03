@@ -53,7 +53,7 @@ const ProjectCard = ({ id, title, imageUrl, projectUrl }: ProjectProps) => {
         easing: "cubic-bezier(0.87, 0, 0.13, 1)",
         fill: "forwards",
         pseudoElement: "::view-transition-old(root)",
-      }
+      },
     );
 
     document.documentElement.animate(
@@ -66,7 +66,7 @@ const ProjectCard = ({ id, title, imageUrl, projectUrl }: ProjectProps) => {
         easing: "cubic-bezier(0.87, 0, 0.13, 1)",
         fill: "forwards",
         pseudoElement: "::view-transition-new(root)",
-      }
+      },
     );
   }
 
@@ -139,16 +139,16 @@ const ProjectCard = ({ id, title, imageUrl, projectUrl }: ProjectProps) => {
               transition={{ repeat: Infinity, ease: "linear", duration: 25 }}
             >
               <span>
-                {activeProject} — {activeProject} — {activeProject} —{" "}
-                {activeProject} — {activeProject} — {activeProject} —{" "}
-                {activeProject} — {activeProject} — {activeProject} —{" "}
-                {activeProject} — {activeProject} — {activeProject} —{" "}
+                {activeProject} ⟶ {activeProject} ⟶ {activeProject} ⟶{" "}
+                {activeProject} ⟶ {activeProject} ⟶ {activeProject} ⟶{" "}
+                {activeProject} ⟶ {activeProject} ⟶ {activeProject} ⟶{" "}
+                {activeProject} ⟶ {activeProject} ⟶ {activeProject} ⟶{" "}
               </span>
               <span>
-                {activeProject} — {activeProject} — {activeProject} —{" "}
-                {activeProject} — {activeProject} — {activeProject} —{" "}
-                {activeProject} — {activeProject} — {activeProject} —{" "}
-                {activeProject} — {activeProject} — {activeProject} —{" "}
+                {activeProject} ⟶ {activeProject} ⟶ {activeProject} ⟶{" "}
+                {activeProject} ⟶ {activeProject} ⟶ {activeProject} ⟶{" "}
+                {activeProject} ⟶ {activeProject} ⟶ {activeProject} ⟶{" "}
+                {activeProject} ⟶ {activeProject} ⟶ {activeProject} ⟶{" "}
               </span>
             </motion.div>
           </div>
