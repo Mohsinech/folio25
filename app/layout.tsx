@@ -26,7 +26,7 @@ export default function RootLayout({
             </div>
 
             {/* Logic: Show on mobile, hide on desktop */}
-            <div className="block -lg:hidden">
+            <div className="block lg:hidden">
               <MobileHeader />
             </div>
           </header>

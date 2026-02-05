@@ -243,7 +243,7 @@ const Home = () => {
               </ul>
             </div>
 
-            <div className={styles.listTwo}>
+            <div className={`${styles.listTwo} ${styles.mobile}`}>
               <div className="overflow-hidden">
                 <motion.h3
                   custom={2}

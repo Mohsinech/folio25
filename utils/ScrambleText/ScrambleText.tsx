@@ -36,7 +36,7 @@ const ScrambleLink = ({
         easing: "cubic-bezier(0.87, 0, 0.13, 1)",
         fill: "forwards",
         pseudoElement: "::view-transition-old(root)",
-      }
+      },
     );
 
     document.documentElement.animate(
@@ -49,7 +49,7 @@ const ScrambleLink = ({
         easing: "cubic-bezier(0.87, 0, 0.13, 1)",
         fill: "forwards",
         pseudoElement: "::view-transition-new(root)",
-      }
+      },
     );
   }
 

@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   padding: 0 20px;
-  /* z-index: 1000; */
+  z-index: 1000;
 }
 
 .nav {
@@ -16,11 +16,164 @@
   justify-content: space-between; /* Pushes Logo to left, Links to right */
   width: 100%;
 }
-ne .logo {
+
+.logo {
   color: #f1f1f1;
   font-family: "mon", sans-serif;
   text-transform: uppercase;
   font-size: 0.9rem;
   line-height: normal;
   display: block; /* Ensures transforms work on it */
+}
+
+.menu {
+  color: #f1f1f1;
+  font-family: "mon", sans-serif;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  line-height: normaMENUl;
+  padding: 0.3rem 0.8rem;
+  background-color: #222222;
+  cursor: pointer;
+  z-index: 999999;
+  overflow: hidden;
+}
+
+.menuText {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 1em;
+  line-height: normal;
+}
+
+.menuRow {
+  display: flex;
+  gap: 0;
+}
+
+.navList {
+  position: fixed;
+  z-index: 998;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 60%;
+  background-color: #222222;
+  list-style: none;
+  padding: 8rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.svgCurve {
+  position: absolute;
+  top: 0;
+  left: -99px;
+  width: 100px;
+  height: 100%;
+  fill: #222222;
+  stroke: none;
+}
+
+.navList ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+
+  gap: 2rem;
+}
+
+.navList h3 {
+  color: #ccc;
+  font-family: "mon", sans-serif;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  line-height: normal;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #444;
+  padding-bottom: 2rem;
+}
+.listOne h3,
+.listTwo h3,
+.listThree h3 {
+  font-size: 12px;
+}
+
+.link {
+  color: #f1f1f1;
+  font-family: "mon", sans-serif;
+  text-transform: uppercase;
+  font-size: 4rem;
+  line-height: 0.8;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.link:hover {
+  transform: translateX(10px);
+}
+
+.socials ul {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 0;
+
+  position: absolute;
+  bottom: 20px;
+}
+
+.socials ul li {
+  color: #ccc;
+  font-family: "mon", sans-serif;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.socials ul li:hover {
+  color: #f1f1f1;
+}
+
+/*  */
+@media (max-width: 600px) {
+  .header {
+    height: 50px;
+    padding: 0 15px;
+  }
+
+  .navList {
+    width: 100%;
+    padding: 6rem 2rem;
+  }
+
+  .navList h3 {
+    font-size: 0.75rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .link {
+    font-size: 3rem;
+    line-height: 0.8;
+  }
+
+  .socials ul li {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .navList ul {
+    gap: 1.6rem;
+  }
+
+  .link {
+    font-size: 2.5rem;
+    line-height: 0.8;
+  }
 }
