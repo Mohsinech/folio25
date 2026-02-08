@@ -174,9 +174,9 @@ const ProjectCard = ({
 
     const distance = Math.abs(index - hoveredIndex);
 
-    if (distance === 0) return 1.5; // Hovered card
-    if (distance === 1) return 1.3; // Adjacent cards
-    if (distance === 2) return 1.15; // Two cards away
+    if (distance === 0) return 1.25; // Hovered card
+    if (distance === 1) return 1.15; // Adjacent cards
+    if (distance === 2) return 1.05; // Two cards away
 
     return 1; // Default scale
   };

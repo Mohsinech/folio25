@@ -120,3 +120,56 @@
 .track span {
   padding-right: 10px;
 }
+
+/*  */
+@media (max-width: 1024px) {
+  .imageWrapper {
+    min-height: 42vh;
+  }
+
+  .projectContent {
+    top: 1.5rem;
+    left: 1.5rem;
+    font-size: 1rem;
+  }
+
+  .cursor {
+    display: none;
+  }
+}
+
+@media (max-width: 820px) {
+  .imageWrapper {
+    min-height: 70vh;
+  }
+
+  .projectContent {
+    top: 2rem;
+    left: 2rem;
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .imageWrapper {
+    min-height: 50vh;
+  }
+
+  .projectContent {
+    top: 1rem;
+    left: 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .imageWrapper {
+    min-height: 53vh;
+  }
+
+  .projectContent {
+    top: 0.5rem;
+    left: 0.5rem;
+    font-size: 0.75rem;
+  }
+}
