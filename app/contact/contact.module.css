@@ -218,3 +218,203 @@
   transform: scaleX(0);
   transform-origin: bottom left;
 }
+
+/*  */
+@media (max-width: 1024px) {
+  .centerContent {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem;
+    gap: 4rem;
+  }
+
+  .content h1 {
+    font-size: 1.7rem;
+  }
+
+  .fillForm {
+    font-size: 1.2rem;
+  }
+
+  .form {
+    width: 90%;
+  }
+
+  .formText {
+    font-size: 1.8rem;
+  }
+
+  .formText input,
+  .formText select,
+  .formText textarea {
+    font-size: 1.8rem;
+  }
+
+  .formText .submitButton {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 820px) {
+  .centerContent {
+    padding: 1rem;
+    gap: 5rem;
+  }
+
+  .content h1 {
+    font-size: 1.5rem;
+  }
+
+  .fillForm {
+    font-size: 1rem;
+  }
+
+  .form {
+    width: 100%;
+  }
+
+  .formText {
+    font-size: 1.6rem;
+  }
+
+  .formText input,
+  .formText select,
+  .formText textarea {
+    font-size: 1.6rem;
+  }
+
+  .formText .submitButton {
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    width: fit-content;
+    align-self: flex-start;
+  }
+
+  .socials a {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .centerContent {
+    padding: 1rem;
+    gap: 5rem;
+  }
+
+  .content h1 {
+    font-size: 1.4rem;
+  }
+
+  .fillForm {
+    font-size: 1rem;
+  }
+
+  .form {
+    width: 90%;
+  }
+
+  .formText {
+    font-size: 1.6rem;
+  }
+
+  .formText input,
+  .formText select,
+  .formText textarea {
+    font-size: 1.6rem;
+    line-height: 1;
+  }
+
+  .formText .submitButton {
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    width: fit-content;
+    align-self: flex-start;
+  }
+
+  .socials a {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .centerContent {
+    padding: 1rem;
+    gap: 3rem;
+  }
+
+  .content h1 {
+    font-size: 1.2rem;
+  }
+
+  .fillForm {
+    font-size: 0.9rem;
+  }
+
+  .form {
+    width: 100%;
+  }
+
+  .formText {
+    font-size: 1.3rem;
+  }
+
+  .formText input,
+  .formText select,
+  .formText textarea {
+    font-size: 1.3rem;
+    line-height: 1.2;
+  }
+
+  .formText .submitButton {
+    margin-top: 2rem;
+    font-size: 1rem;
+    width: fit-content;
+    align-self: flex-start;
+  }
+
+  .socials ul {
+    display: none;
+  }
+
+  .socials a {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .centerContent {
+    padding: 0.5rem;
+    gap: 2rem;
+  }
+
+  .content h1 {
+    font-size: 1.1rem;
+  }
+
+  .fillForm {
+    font-size: 0.8rem;
+  }
+
+  .form {
+    width: 90%;
+  }
+
+  .formText {
+    font-size: 1.1rem;
+  }
+
+  .formText input,
+  .formText select,
+  .formText textarea {
+    font-size: 1.1rem;
+    line-height: 1.2;
+  }
+
+  .formText .submitButton {
+    margin-top: 2rem;
+    font-size: 1rem;
+    width: fit-content;
+    align-self: flex-start;
+  }
+}
