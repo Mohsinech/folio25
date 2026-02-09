@@ -152,7 +152,7 @@
 
 @media (max-width: 600px) {
   .imageWrapper {
-    min-height: 50vh;
+    min-height: 52vh;
   }
 
   .projectContent {
@@ -164,7 +164,7 @@
 
 @media (max-width: 400px) {
   .imageWrapper {
-    min-height: 53vh;
+    min-height: 62vh;
   }
 
   .projectContent {

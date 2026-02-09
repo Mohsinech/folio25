@@ -339,7 +339,7 @@
 
 @media (max-width: 600px) {
   .centerContent {
-    padding: 1rem;
+    padding: 0 15px;
     gap: 3rem;
   }
 
