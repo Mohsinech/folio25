@@ -8,9 +8,36 @@ import ScrambleText from "@/utils/ScrambleSimple/ScrambleText";
 import ScrollBlurOverlay from "@/components/ScrollBlurOverlay/ScrollBlurOverlay";
 import ScrollFadeContent from "@/components/ScrollFadeContent/ScrollFadeContent";
 import { FadeInUp } from "@/components/ui/ui";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 
 const About = () => {
+  const [openAccordion, setOpenAccordion] = useState<number | null>(null);
+
+  const toggleAccordion = (index: number) => {
+    setOpenAccordion(openAccordion === index ? null : index);
+  };
+
+  const services = [
+    {
+      number: "01",
+      title: "Design & Strategy",
+      description:
+        "I craft user-centric designs that balance aesthetics with functionality. From wireframes to high-fidelity prototypes, I ensure every pixel serves a purpose—delivering interfaces that are not only beautiful but intuitive and conversion-focused.",
+    },
+    {
+      number: "02",
+      title: "Development & Engineering",
+      description:
+        "I build performant, scalable websites and SaaS products from the ground up. Specializing in React, Next.js, and modern web technologies, I focus on seamless micro-interactions, smooth animations, and responsive design—bringing ideas to life with clean, maintainable code.",
+    },
+    {
+      number: "03",
+      title: "End-to-End Solutions",
+      description:
+        "From concept to launch, I handle the full spectrum—design, development, and deployment. My hybrid skill set allows me to bridge the gap between creativity and engineering, delivering polished, production-ready products that perform at scale.",
+    },
+  ];
   return (
     <section className={styles.about}>
       <ScrollBlurOverlay />
@@ -31,7 +58,7 @@ const About = () => {
               delay: 0.8,
             }}
           >
-            <Image src="/assets/images/me.png" fill alt="about image" />
+            <Image src="/assets/images/me.webp" fill alt="about image" />
           </motion.div>
         </div>
         <div style={{ overflow: "hidden" }}>
@@ -200,8 +227,65 @@ const About = () => {
         <div style={{ overflow: "hidden" }}>
           <FadeInUp delay={1.4}>
             <div className={styles.firstList}>
-              <h3>(05) Me on socials</h3>
-              <ul className="flex flex-wrap gap-2">
+              <h3>(05) I can help you with</h3>
+              <div className={styles.accordion}>
+                {services.map((service, index) => (
+                  <div key={index} className={styles.accordionItem}>
+                    <button
+                      className={styles.accordionHeader}
+                      onClick={() => toggleAccordion(index)}
+                    >
+                      <div className={styles.accordionTitle}>
+                        <h4 className={styles.title}>{service.number}</h4>
+                        <h4>{service.title}</h4>
+                      </div>
+                      <motion.span
+                        className={styles.accordionIcon}
+                        animate={{ rotate: openAccordion === index ? 45 : 0 }}
+                        transition={{
+                          duration: 0.5,
+                          ease: [0.65, 0.05, 0, 1],
+                        }}
+                      >
+                        +
+                      </motion.span>
+                    </button>
+                    <AnimatePresence initial={false}>
+                      {openAccordion === index && (
+                        <motion.div
+                          className={styles.accordionContent}
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{
+                            height: {
+                              duration: 0.6,
+                              ease: [0.65, 0.05, 0, 1],
+                            },
+                            opacity: {
+                              duration: 0.4,
+                              ease: [0.65, 0.05, 0, 1],
+                            },
+                          }}
+                        >
+                          <h5 className={styles.accordionDes}>
+                            {service.description}
+                          </h5>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </FadeInUp>
+        </div>
+
+        <div style={{ overflow: "hidden" }}>
+          <FadeInUp delay={1.6}>
+            <div className={styles.firstList}>
+              <h3>(06) Me on socials</h3>
+              <ul className="flex flex-wrap">
                 <Link
                   href="https://www.youtube.com/@itsmuhsen"
                   target="_blank"
@@ -256,8 +340,8 @@ const About = () => {
         <div style={{ overflow: "hidden" }}>
           <FadeInUp delay={1.6}>
             <div className={styles.firstList}>
-              <h3>(06) Availabilties</h3>
-              <p className="w-lg">
+              <h3>(07) Availabilties</h3>
+              <p>
                 &bull; Open to freelance projects, SaaS collaborations, and
                 long-term opportunities.{" "}
                 <ScrambleLink label="Let's Collaborate" href="/contact" /> ,I

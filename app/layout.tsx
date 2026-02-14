@@ -18,6 +18,7 @@ export default function RootLayout({
   return (
     <ViewTransitions>
       <html lang="en">
+        <link rel="icon" type="icon/icon-x" href="/favicon.ico" />
         <body>
           <header>
             {/* Logic: Hide on mobile, show on desktop */}

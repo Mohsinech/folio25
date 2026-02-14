@@ -1,0 +1,6 @@
+@media (max-width: 600px) {
+  .scrollFadeContent {
+    max-width: 430px;
+    width: 100%;
+  }
+}
