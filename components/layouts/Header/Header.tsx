@@ -1,16 +1,18 @@
 "use client";
 
+import Link from "next/link";
 import styles from "./header.module.css";
-import ScrambleLink from "@/utils/ScrambleText/ScrambleText";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { NAV_LINKS } from "./data";
+import ScrambleSimple from "@/utils/ScrambleSimple/ScrambleSimple";
+import { useState } from "react";
+import Image from "next/image";
 
 // 2. Define the animation once
 const revealVars = {
   initial: {
     y: "120%",
     opacity: 0,
-    skewY: 5, // A slightly stronger skew looks more "premium"
+    skewY: 5,
   },
   animate: (i: number) => ({
     y: "0%",
@@ -19,7 +21,7 @@ const revealVars = {
     transition: {
       duration: 2,
       ease: [0.87, 0.13, 0, 1],
-      delay: i * 0.2, // Automatic stagger based on index
+      delay: i * 0.2,
     },
   }),
 };
@@ -27,47 +29,53 @@ const revealVars = {
 //
 
 const Header = () => {
-  //
   const scrollY = useScroll().scrollY;
   const headerY = useTransform(scrollY, [0, 200], [0, -100]);
+
+  // Conditions
+
   return (
     <motion.header style={{ y: headerY }} className={styles.header}>
-      <nav className={styles.nav}>
-        {/* Logo (Animate first) */}
-        <div className="overflow-hidden">
-          {" "}
-          {/* Wrapper for clean slide-up */}
-          <motion.div
-            custom={0} // Index 0 (starts immediately)
-            variants={revealVars}
-            initial="initial"
-            animate="animate"
-          >
-            <ScrambleLink label="MOHSSINE" href="/" className={styles.logo} />
-          </motion.div>
-        </div>
+      {/* LOGO */}
+      <div className={styles.logo}>
+        <motion.h1
+        // initial="initial"
+        // whileInView="animate"
+        // viewport={{ once: true }}
+        // custom={0} // Pass index for staggered animation
+        // variants={revealVars}
+        >
+          MOHSSINE
+        </motion.h1>
+      </div>
 
-        {/* Navigation Links */}
-        <ul className={styles.navList}>
-          {NAV_LINKS.map((link, i) => (
-            <li key={i} className="overflow-hidden">
-              {" "}
-              {/* Wrapper for clean slide-up */}
-              <motion.div
-                custom={i + 1} // Start delays after the logo (0.1, 0.2, etc.)
-                variants={revealVars}
-                initial="initial"
-                animate="animate"
-              >
-                <ScrambleLink
-                  label={link.label}
-                  href={link.href}
-                  className={styles.link}
-                />
-              </motion.div>
-            </li>
-          ))}
-        </ul>
+      {/* NAV BUTTONS */}
+      <nav className={styles.nav}>
+        {/* latest project */}
+        <div className={styles.latest}>
+          <button className={styles.btn}>
+            <ScrambleSimple label="Latest Project" />
+          </button>
+        </div>
+        {/* Let's talk */}
+        <div className={styles.talk}>
+          <button className={styles.btn}>
+            <ScrambleSimple label="Let's talk" />
+          </button>
+        </div>
+        {/* Socials */}
+        <div className={styles.socials}>
+          <button className={styles.btn}>
+            <Image
+              src="/assets/icons/plus.svg"
+              alt="svg"
+              height={15}
+              width={15}
+              className="object-cover"
+            />
+            <ScrambleSimple label="Socials" />
+          </button>
+        </div>
       </nav>
     </motion.header>
   );

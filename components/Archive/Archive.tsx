@@ -2,7 +2,7 @@
 
 import React from "react";
 import styles from "./archive.module.css";
-import ScrambleText from "@/utils/ScrambleSimple/ScrambleText";
+import ScrambleText from "@/utils/ScrambleSimple/ScrambleSimple";
 import Link from "next/link";
 
 interface ArchiveProps {

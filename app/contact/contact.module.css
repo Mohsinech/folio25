@@ -93,7 +93,9 @@
 }
 
 .formText input::placeholder {
-  transition: all 0.5s cubic-bezier(0.65, 0.05, 0, 1);
+  transition:
+    transform 0.5s cubic-bezier(0.65, 0.05, 0, 1),
+    opacity 0.5s cubic-bezier(0.65, 0.05, 0, 1);
 }
 
 .formText input:focus::placeholder {
@@ -131,7 +133,9 @@
 }
 
 .formText textarea::placeholder {
-  transition: all 0.5s cubic-bezier(0.65, 0.05, 0, 1);
+  transition:
+    transform 0.5s cubic-bezier(0.65, 0.05, 0, 1),
+    opacity 0.5s cubic-bezier(0.65, 0.05, 0, 1);
 }
 
 .formText textarea:focus::placeholder {
@@ -384,7 +388,7 @@
 
 @media (max-width: 400px) {
   .centerContent {
-    padding: 0.5rem;
+    padding: 0 15px;
     gap: 2rem;
   }
 

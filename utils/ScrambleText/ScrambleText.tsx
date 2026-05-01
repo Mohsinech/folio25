@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-import { Link, useTransitionRouter } from "next-view-transitions";
+import Link from "next/link";
 
 // 1. Scramble Config
 const CYCLES_PER_LETTER = 2;
@@ -20,38 +20,8 @@ const ScrambleLink = ({
   style,
   ...props
 }: ScrambleLinkProps) => {
-  const router = useTransitionRouter();
   const [text, setText] = useState(label);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
-
-  // 2. The View Transition Logic (Your Code)
-  function slideInOut() {
-    document.documentElement.animate(
-      [
-        { transform: "translateY(0)", opacity: 1, scale: 1 },
-        { opacity: 0, scale: 0.8, transform: "translateY(-35%)" },
-      ],
-      {
-        duration: 1500,
-        easing: "cubic-bezier(0.87, 0, 0.13, 1)",
-        fill: "forwards",
-        pseudoElement: "::view-transition-old(root)",
-      },
-    );
-
-    document.documentElement.animate(
-      [
-        { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" },
-        { clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)" },
-      ],
-      {
-        duration: 1500,
-        easing: "cubic-bezier(0.87, 0, 0.13, 1)",
-        fill: "forwards",
-        pseudoElement: "::view-transition-new(root)",
-      },
-    );
-  }
 
   // 3. The Scramble Logic (Hover Effect)
   const stopScramble = () => {
@@ -80,18 +50,9 @@ const ScrambleLink = ({
     }, SHUFFLE_TIME);
   };
 
-  // 4. Click Handler
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    router.push(href, {
-      onTransitionReady: slideInOut,
-    });
-  };
-
   return (
     <Link
       href={href}
-      onClick={handleClick}
       onMouseEnter={scramble}
       onMouseLeave={stopScramble}
       className={className}

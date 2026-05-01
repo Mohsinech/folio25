@@ -5,48 +5,53 @@ import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+// Register GSAP plugins
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
 export default function SmoothScroll() {
   useEffect(() => {
+    // Dennis Snellenberg's exact Lenis configuration
     const lenis = new Lenis({
-      // 1. The "Snellenberg" Feel (Heavy & Smooth)
-      // Lower values = heavier/slower feel.
-      // 0.1 is the sweet spot for that "luxury" web feel.
-      lerp: 0.07,
-
-      // Alternative: use duration if you prefer time-based
-      // duration: 1.2,
-
-      // 2. Multipliers (Tweak these if it feels too slow on trackpads)
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: "vertical",
+      gestureOrientation: "vertical",
+      smoothWheel: true,
       wheelMultiplier: 1,
+      smoothTouch: false,
       touchMultiplier: 2,
-
-      // 3. Performance & Logic
-      infinite: false, // Turn true if you want infinite loop
+      infinite: false,
     });
 
-    // 4. Sync GSAP ScrollTrigger (CRITICAL for animations)
-    // Lenis tells ScrollTrigger exactly where the scroll is
+    // Sync Lenis scroll with GSAP ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);
 
-    // 5. The Animation Loop
-    // Instead of using Lenis's own requestAnimationFrame, we plug it
-    // into GSAP's ticker. This keeps scroll & animations in perfect sync.
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
-    });
+    // Add Lenis's requestAnimationFrame (raf) method to GSAP's ticker
+    // This ensures Lenis's smooth scroll animation updates on each GSAP tick
+    const onTick = (time: number) => {
+      lenis.raf(time * 1000); // Convert time from seconds to milliseconds
+    };
 
-    // 6. Disable GSAP's lag smoothing
-    // This prevents GSAP from "jumping" to catch up, which breaks the smooth feel
+    gsap.ticker.add(onTick);
+
+    // Disable lag smoothing in GSAP to match the smooth scroll
     gsap.ticker.lagSmoothing(0);
 
-    // Cleanup
+    // Optional: Add window resize listener for ScrollTrigger refresh
+    const handleResize = () => {
+      ScrollTrigger.refresh();
+    };
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup function
     return () => {
       lenis.destroy();
-      gsap.ticker.remove((time) => {
-        lenis.raf(time * 1000);
-      });
+      window.removeEventListener("resize", handleResize);
+      gsap.ticker.remove(onTick);
     };
   }, []);
 
-  return null; // This component renders nothing visually
+  return null;
 }

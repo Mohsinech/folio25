@@ -6,7 +6,7 @@
 body,
 html {
   overflow-x: clip;
-  background-color: #171717;
+  background-color: #fff;
   /* height: 100dvh; */
 }
 
@@ -148,4 +148,17 @@ html.lenis body {
   font-family: "times";
   src: url("/assets/fonts/Times/TimesNow-SemiLight.woff2");
   font-weight: 200;
+}
+
+/* Satoshi */
+@font-face {
+  font-family: "sato";
+  src: url("/assets/fonts/satoshi/Satoshi-Medium.woff2") format("woff2");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "sato";
+  src: url("/assets/fonts/satoshi/Satoshi-Bold.woff2") format("woff2");
+  font-weight: 800;
 }

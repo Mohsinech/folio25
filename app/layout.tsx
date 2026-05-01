@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
-import { ViewTransitions } from "next-view-transitions";
 import { Header } from "@/components/layouts";
-import { SmoothScroll } from "@/utils";
-import MobileHeader from "@/components/screens/mobileH/Header";
+import { SmoothScroll } from "@/utils/index";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,26 +14,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ViewTransitions>
-      <html lang="en">
-        <link rel="icon" type="icon/icon-x" href="/favicon.ico" />
-        <body>
-          <header>
-            {/* Logic: Hide on mobile, show on desktop */}
-            <div className="hidden lg:block">
-              <Header />
-            </div>
+    <html lang="en">
+      <link rel="icon" type="icon/icon-x" href="/favicon.ico" />
+      <body>
+        <header>
+          {/* Logic: Hide on mobile, show on desktop */}
+          <div className="hidden lg:block">
+            <Header />
+          </div>
 
-            {/* Logic: Show on mobile, hide on desktop */}
-            <div className="block lg:hidden">
-              <MobileHeader />
-            </div>
-          </header>
+          {/* Logic: Show on mobile, hide on desktop */}
+          <div className="block lg:hidden">{/* <MobileHeader /> */}</div>
+        </header>
 
-          <SmoothScroll />
-          {children}
-        </body>
-      </html>
-    </ViewTransitions>
+        <SmoothScroll />
+        {children}
+      </body>
+    </html>
   );
 }

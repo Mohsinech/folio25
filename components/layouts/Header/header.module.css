@@ -6,55 +6,41 @@
   height: 60px;
   display: flex;
   align-items: center;
-  padding: 0 20px; /* Keep your original padding */
+  justify-content: space-between;
+  padding: 0 2rem;
   z-index: 1000;
-  /* Optional: Add mix-blend-mode if you want the text to invert over images */
-  /* mix-blend-mode: difference; */
+}
+
+.logo h1 {
+  font-family: "mon", sans-serif;
+  letter-spacing: -0.025rem;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .nav {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Pushes Logo to left, Links to right */
-  width: 100%;
+  gap: 1rem;
 }
 
-.logo {
-  color: #f1f1f1;
-  font-family: "mon", sans-serif;
-  text-transform: uppercase;
-  font-size: 0.9rem;
-  line-height: normal;
-  display: block; /* Ensures transforms work on it */
-}
+/* Buttons */
 
-/* This replaces your old ".nav ul" */
-.navList {
+.btn {
+  background-color: #e6e6e680;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 60px; /* Keeps the spacing between Intro/Work/Inquiry */
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  width: 70%;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.link {
-  color: #ccc;
-  font-family: "mori", sans-serif;
+.btn h2 {
+  color: #171717;
+  font-family: "jet", sans-serif;
+  font-size: 12px;
   text-transform: uppercase;
-  font-size: 0.85rem;
-  line-height: normal;
-  transition: color 0.3s ease;
-  display: block; /* Ensures transforms work on it */
-}
-
-.link:hover {
-  color: #fff;
-}
-
-/* CRITICAL: This hides the text when it is translated down before the animation starts */
-.mask {
-  overflow: hidden;
+  letter-spacing: -0.035rem;
 }

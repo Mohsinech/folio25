@@ -6,6 +6,7 @@ import { ScrambleLink } from "@/utils";
 import { archivesData } from "./data";
 import { useScroll, useTransform, motion } from "framer-motion";
 import ArchiveList from "@/components/Archive/Archive";
+import ArchiveListMobile from "@/components/ArchiveMobile/Archive";
 
 const Page = () => {
   const scrollYProgress = useScroll().scrollYProgress;
@@ -24,7 +25,7 @@ const Page = () => {
       skewY: 0,
       transition: {
         duration: 2,
-        ease: [0.87, 0.13, 0, 1],
+        ease: [0.87, 0.13, 0, 1] as [number, number, number, number],
         delay: i * 0.05,
       },
     }),
@@ -79,7 +80,10 @@ const Page = () => {
           </div>
 
           {archivesData.map((archive) => (
-            <ArchiveList key={archive.id} {...archive} />
+            <React.Fragment key={archive.id}>
+              <ArchiveList {...archive} />
+              <ArchiveListMobile {...archive} />
+            </React.Fragment>
           ))}
         </div>
       </section>
