@@ -1,4 +1,4 @@
 import SmoothScroll from "./SmoothScroll/SmoothScroll";
-import ScrambleLink from "./ScrambleText/ScrambleText";
+import ScrambleLink from "./ScrambleLink/ScrambleLink";
 
 export { SmoothScroll, ScrambleLink };

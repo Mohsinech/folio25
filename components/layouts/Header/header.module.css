@@ -11,7 +11,7 @@
   z-index: 1000;
 }
 
-.logo h1 {
+.logo .h1 {
   font-family: "mon", sans-serif;
   letter-spacing: -0.025rem;
   font-size: 1rem;
@@ -40,7 +40,7 @@
 .btn h2 {
   color: #171717;
   font-family: "jet", sans-serif;
-  font-size: 12px;
+  font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: -0.035rem;
+  letter-spacing: -0.045rem;
 }

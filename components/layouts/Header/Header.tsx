@@ -1,30 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import styles from "./header.module.css";
 import { motion, useScroll, useTransform } from "framer-motion";
 import ScrambleSimple from "@/utils/ScrambleSimple/ScrambleSimple";
-import { useState } from "react";
 import Image from "next/image";
-
-// 2. Define the animation once
-const revealVars = {
-  initial: {
-    y: "120%",
-    opacity: 0,
-    skewY: 5,
-  },
-  animate: (i: number) => ({
-    y: "0%",
-    opacity: 1,
-    skewY: 0,
-    transition: {
-      duration: 2,
-      ease: [0.87, 0.13, 0, 1],
-      delay: i * 0.2,
-    },
-  }),
-};
+import { ScrambleLink } from "@/utils";
 
 //
 
@@ -38,15 +18,7 @@ const Header = () => {
     <motion.header style={{ y: headerY }} className={styles.header}>
       {/* LOGO */}
       <div className={styles.logo}>
-        <motion.h1
-        // initial="initial"
-        // whileInView="animate"
-        // viewport={{ once: true }}
-        // custom={0} // Pass index for staggered animation
-        // variants={revealVars}
-        >
-          MOHSSINE
-        </motion.h1>
+        <ScrambleLink className={styles.h1} href="/" label="MOHSSINE" />
       </div>
 
       {/* NAV BUTTONS */}
