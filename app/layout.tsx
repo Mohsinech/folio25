@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "@/styles/globals.css";
 import { Header } from "@/components/layouts";
 import { SmoothScroll } from "@/utils/index";
+import ViewTransitionHandler from "@/components/ViewTransitionHandler";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -27,6 +28,7 @@ export default function RootLayout({
           <div className="block lg:hidden">{/* <MobileHeader /> */}</div>
         </header>
 
+        <ViewTransitionHandler />
         <SmoothScroll />
         {children}
       </body>

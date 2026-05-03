@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import styles from "./contact.module.css";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
@@ -17,32 +17,45 @@ const Contact = () => {
     message: "",
   });
 
-  const [isValid, setIsValid] = useState(false);
   // Track status: 'idle', 'error' (fields missing), or 'success' (sent)
   const [status, setStatus] = useState<"idle" | "error" | "success">("idle");
-
-  // 2. LOGIC: Check validity
-  useEffect(() => {
+  const [skipEntrance] = useState(() => {
+    try {
+      return !!sessionStorage.getItem("vt-active");
+    } catch {
+      return false;
+    }
+  });
+  // derive validity from formData to avoid setting state inside effects
+  const isValid = useMemo(() => {
     const { name, email, org, service, budget, message } = formData;
-    const isFilled =
+    return (
       name.trim() !== "" &&
       email.trim() !== "" &&
       org.trim() !== "" &&
       service.trim() !== "" &&
       budget.trim() !== "" &&
-      message.trim() !== "";
-
-    setIsValid(isFilled);
-    // Clear error if user starts typing again
-    if (isFilled && status === "error") setStatus("idle");
-  }, [formData, status]);
+      message.trim() !== ""
+    );
+  }, [formData]);
 
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >,
   ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const newData = { ...formData, [e.target.name]: e.target.value };
+    setFormData(newData);
+    // clear error when form becomes valid while user types
+    const { name, email, org, service, budget, message } = newData;
+    const nowValid =
+      name.trim() !== "" &&
+      email.trim() !== "" &&
+      org.trim() !== "" &&
+      service.trim() !== "" &&
+      budget.trim() !== "" &&
+      message.trim() !== "";
+    if (nowValid && status === "error") setStatus("idle");
   };
 
   // 3. LOGIC: Submit Handler
@@ -81,7 +94,6 @@ const Contact = () => {
       skewY: 0,
       transition: {
         duration: 2,
-        ease: [0.87, 0.13, 0, 1],
         delay: i * 0.05,
       },
     }),
@@ -96,14 +108,14 @@ const Contact = () => {
       <section className={styles.section}>
         <motion.div
           variants={revealVars}
-          initial="initial"
-          animate="animate"
+          initial={skipEntrance ? false : "initial"}
+          animate={skipEntrance ? undefined : "animate"}
           className={styles.centerContent}
         >
           <motion.div className={styles.content}>
             <motion.div
               className="overflow-hidden"
-              transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+              transition={{ duration: 0.8 }}
             >
               <Link
                 target="_blank"
@@ -172,9 +184,9 @@ const Contact = () => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 2, ease: [0.65, 0.05, 0, 1], delay: 1 }}
+            initial={skipEntrance ? false : { opacity: 0 }}
+            animate={skipEntrance ? undefined : { opacity: 1 }}
+            transition={{ duration: 2, delay: 1 }}
             className={styles.formWrapper}
           >
             <motion.form className={styles.form} onSubmit={handleSubmit}>
@@ -255,8 +267,10 @@ const Contact = () => {
                         style={{
                           marginTop: "2rem",
                         }}
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        initial={skipEntrance ? false : { opacity: 0, y: -10 }}
+                        animate={
+                          skipEntrance ? undefined : { opacity: 1, y: 0 }
+                        }
                         exit={{ opacity: 0 }}
                         className={styles.errorMessage}
                       >
@@ -268,8 +282,10 @@ const Contact = () => {
                         style={{
                           marginTop: "2rem",
                         }}
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        initial={skipEntrance ? false : { opacity: 0, y: -10 }}
+                        animate={
+                          skipEntrance ? undefined : { opacity: 1, y: 0 }
+                        }
                         className={styles.successMessage}
                       >
                         Thanks! I&apos;ll get back to you shortly.
@@ -284,9 +300,9 @@ const Contact = () => {
 
         {/* Footer Content */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 2, ease: [0.65, 0.05, 0, 1] }}
+          initial={skipEntrance ? false : { opacity: 0 }}
+          animate={skipEntrance ? undefined : { opacity: 1 }}
+          transition={{ duration: 2 }}
           className={styles.footerContent}
         >
           <p>All rights reserved &copy; 2026</p>

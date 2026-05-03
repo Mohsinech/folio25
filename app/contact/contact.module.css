@@ -31,8 +31,8 @@
 
 .content h1 {
   font-size: 1.5rem;
-  font-family: "mon", sans-serif;
-  color: #f1f1f1;
+  font-family: "mori", sans-serif;
+  color: #171717;
   line-height: 1.1;
   letter-spacing: -0.025rem;
 }
@@ -58,10 +58,10 @@
 }
 
 .formText {
-  font-family: "mon", sans-serif;
-  font-size: 1.6rem;
+  font-family: "mori", sans-serif;
+  font-size: 1.5rem;
   line-height: 1.4;
-  color: #f1f1f1;
+  color: #171717;
   letter-spacing: -0.025rem;
   width: 90%;
 }
@@ -71,7 +71,7 @@
   width: auto;
   padding: 0.2rem 0.6rem;
   font-size: 1.5rem;
-  color: #ccc;
+  color: #686868;
   font-family: "mon", sans-serif;
   border: none;
   background: transparent;
@@ -105,7 +105,7 @@
 
 .formText select option {
   background: rgb(34, 34, 34);
-  color: #ccc;
+  color: #686868;
   padding: 0.5rem;
 }
 
@@ -116,7 +116,7 @@
   background: transparent;
   border: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Subtle underline */
-  color: #ccc;
+  color: #686868;
   font-family: "mon", sans-serif;
   font-size: 1.5rem;
   resize: none; /* Hide the ugly resize handle */
@@ -149,7 +149,7 @@
   font-size: 1.2rem;
   font-family: "mon", sans-serif;
   color: #f1f1f1;
-  background: #333;
+  background: #171717;
   border: none;
   cursor: pointer;
   transition: background 0.3s;
@@ -181,7 +181,7 @@
   text-decoration: none;
   color: inherit;
   transition: color 0.3s;
-  color: #f1f1f1;
+  color: #171717;
   font-family: "mon", sans-serif;
   font-size: 1.5rem;
   letter-spacing: -0.025rem;
@@ -199,7 +199,7 @@
   font-family: "mon", sans-serif;
   letter-spacing: -0.025rem;
   font-size: 0.9rem;
-  color: #989898;
+  color: #686868;
   position: relative;
   width: fit-content;
   cursor: pointer;
@@ -212,7 +212,7 @@
   height: 1px;
   bottom: -2px;
   left: 0;
-  background-color: #989898;
+  background-color: #686868;
   transform: scaleX(1);
   transform-origin: right;
   transition: transform 1s cubic-bezier(0.65, 0.05, 0, 1);

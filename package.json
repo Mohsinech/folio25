@@ -19,6 +19,7 @@
     "lottie-react": "^2.4.1",
     "lottie-web": "^5.13.0",
     "lucide-react": "^0.562.0",
+    "motion": "^12.38.0",
     "next": "16.0.10",
     "next-seo": "^7.0.1",
     "next-sitemap": "^4.2.3",

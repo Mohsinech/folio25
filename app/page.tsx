@@ -1,12 +1,18 @@
 "use client";
 
+import { useState } from "react";
 import Project from "@/components/Project/Project";
 import { projectData } from "./data";
 import styles from "./page.module.css";
-import ScrambleSimple from "@/utils/ScrambleSimple/ScrambleSimple";
 import { ScrambleLink } from "@/utils";
 
 const Home = () => {
+  const [openProjectId, setOpenProjectId] = useState<number | null>(null);
+
+  const handleProjectToggle = (id: number) => {
+    setOpenProjectId((prev) => (prev === id ? null : id));
+  };
+
   return (
     <main className={styles.main}>
       <section className={styles.hero}>
@@ -57,7 +63,13 @@ const Home = () => {
         {/*  */}
         <div className={styles.space}>
           {projectData.map((data) => (
-            <Project key={data.id} {...data} />
+            <Project
+              key={data.id}
+              {...data}
+              isOpen={openProjectId === data.id}
+              hasActive={openProjectId !== null}
+              onToggle={handleProjectToggle}
+            />
           ))}
         </div>
       </section>
