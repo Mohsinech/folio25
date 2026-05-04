@@ -3,6 +3,7 @@ import "@/styles/globals.css";
 import { Header } from "@/components/layouts";
 import { SmoothScroll } from "@/utils/index";
 import ViewTransitionHandler from "@/components/ViewTransitionHandler";
+import MobileHeader from "@/components/screen/Header/MobileHeader";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,12 +21,14 @@ export default function RootLayout({
       <body>
         <header>
           {/* Logic: Hide on mobile, show on desktop */}
-          <div className="hidden lg:block">
+          <div className="hidden md:block">
             <Header />
           </div>
 
           {/* Logic: Show on mobile, hide on desktop */}
-          <div className="block lg:hidden">{/* <MobileHeader /> */}</div>
+          <div className="block md:hidden">
+            <MobileHeader />
+          </div>
         </header>
 
         <ViewTransitionHandler />
