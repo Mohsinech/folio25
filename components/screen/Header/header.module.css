@@ -18,6 +18,12 @@
   font-weight: 600;
 }
 
+@media (max-width: 400px) {
+  .logo .h1 {
+    font-size: 0.9rem;
+  }
+}
+
 .nav {
   display: flex;
   align-items: center;

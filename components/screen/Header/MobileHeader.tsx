@@ -80,7 +80,7 @@ const MobileHeader = () => {
             </button>
           </div>
           {/* Let's talk */}
-          {/* <div className={styles.talk}>
+          <div className={styles.talk}>
             <button className={styles.btn}>
               <ScrambleLink
                 data-vt="true"
@@ -89,9 +89,9 @@ const MobileHeader = () => {
                 label="Let's talk"
               />
             </button>
-          </div> */}
+          </div>
           {/* Socials */}
-          <div className={styles.socials}>
+          {/* <div className={styles.socials}>
             <button
               className={`${styles.btn} ${isSocialsOpen ? styles.btnActive : ""}`}
               onClick={handleSocialsToggle}
@@ -102,7 +102,6 @@ const MobileHeader = () => {
               <ScrambleSimple label="Socials Network" />
             </button>
 
-            {/* overlay */}
             <AnimatePresence initial={false}>
               {isSocialsOpen && (
                 <motion.div
@@ -166,7 +165,7 @@ const MobileHeader = () => {
                 </motion.div>
               )}
             </AnimatePresence>
-          </div>
+          </div> */}
         </nav>
       </motion.header>
 

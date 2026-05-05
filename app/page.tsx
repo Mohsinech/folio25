@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import Project from "@/components/Project/Project";
 import { projectData } from "./data";
 import styles from "./page.module.css";
 import { ScrambleLink } from "@/utils";
+import ProjectMobile from "@/components/screen/Project/ProjectMobile";
 
 const Home = () => {
   const [openProjectId, setOpenProjectId] = useState<number | null>(null);
@@ -63,13 +64,26 @@ const Home = () => {
         {/*  */}
         <div className={styles.space}>
           {projectData.map((data) => (
-            <Project
-              key={data.id}
-              {...data}
-              isOpen={openProjectId === data.id}
-              hasActive={openProjectId !== null}
-              onToggle={handleProjectToggle}
-            />
+            <React.Fragment key={data.id}>
+              <div className="hidden lg:block">
+                <Project
+                  key={data.id}
+                  {...data}
+                  isOpen={openProjectId === data.id}
+                  hasActive={openProjectId !== null}
+                  onToggle={handleProjectToggle}
+                />
+              </div>
+              <div className="block lg:hidden">
+                <ProjectMobile
+                  key={data.id}
+                  {...data}
+                  isOpen={openProjectId === data.id}
+                  hasActive={openProjectId !== null}
+                  onToggle={handleProjectToggle}
+                />
+              </div>
+            </React.Fragment>
           ))}
         </div>
       </section>

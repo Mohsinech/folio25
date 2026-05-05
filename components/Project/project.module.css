@@ -75,6 +75,13 @@
   padding-top: 1.5rem;
 }
 
+@media (max-width: 1024px) {
+  .contentData h1 {
+    width: 60%;
+    font-size: 0.9rem;
+  }
+}
+
 /* Buttons */
 .btn {
   background-color: #000;
@@ -95,4 +102,11 @@
   text-transform: uppercase;
   letter-spacing: -0.045rem;
   /* font-weight: 600; */
+}
+
+/* Hide desktop version on mobile */
+@media (max-width: 600px) {
+  .archive {
+    display: none;
+  }
 }
