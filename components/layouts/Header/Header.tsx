@@ -13,6 +13,7 @@ import ScrambleSimple from "@/utils/ScrambleSimple/ScrambleSimple";
 import { ScrambleLink } from "@/utils";
 import Link from "next/link";
 import LatestProjectModal from "@/components/LatestProjectModal";
+import ModalMobile from "@/components/screen/Modal/ModalMobile";
 import BlurText from "@/components/BlurText";
 
 //
@@ -21,6 +22,9 @@ const Header = () => {
   const [isSocialsOpen, setIsSocialsOpen] = useState(false);
   const [isLatestProjectModalOpen, setIsLatestProjectModalOpen] =
     useState(false);
+  const [latestModalVariant, setLatestModalVariant] = useState<
+    "mobile" | "desktop"
+  >("desktop");
   const scrollY = useScroll().scrollY;
   const headerY = useTransform(scrollY, [0, 200], [0, -100]);
 
@@ -50,6 +54,12 @@ const Header = () => {
     setIsSocialsOpen((prev) => !prev);
   };
 
+  const handleLatestProjectOpen = () => {
+    const isTabletOrMobile = window.innerWidth <= 1024;
+    setLatestModalVariant(isTabletOrMobile ? "mobile" : "desktop");
+    setIsLatestProjectModalOpen(true);
+  };
+
   // Conditions
 
   return (
@@ -70,10 +80,7 @@ const Header = () => {
         <nav className={styles.nav}>
           {/* latest project */}
           <div className={styles.latest}>
-            <button
-              className={styles.btn}
-              onClick={() => setIsLatestProjectModalOpen(true)}
-            >
+            <button className={styles.btn} onClick={handleLatestProjectOpen}>
               <ScrambleSimple label="Latest Project" />
             </button>
           </div>
@@ -169,10 +176,18 @@ const Header = () => {
       </motion.header>
 
       {/* Latest Project Modal */}
-      <LatestProjectModal
-        isOpen={isLatestProjectModalOpen}
-        onClose={() => setIsLatestProjectModalOpen(false)}
-      />
+      {isLatestProjectModalOpen &&
+        (latestModalVariant === "mobile" ? (
+          <ModalMobile
+            isOpen={isLatestProjectModalOpen}
+            onClose={() => setIsLatestProjectModalOpen(false)}
+          />
+        ) : (
+          <LatestProjectModal
+            isOpen={isLatestProjectModalOpen}
+            onClose={() => setIsLatestProjectModalOpen(false)}
+          />
+        ))}
     </>
   );
 };

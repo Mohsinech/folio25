@@ -28,7 +28,7 @@
   min-height: 0;
 }
 
-/* RIGHT */
+/* LEFT */
 .left {
   width: 35%;
   height: 100%;
@@ -79,7 +79,7 @@
   color: #111;
 }
 
-/* LEFT */
+/* RIGHT */
 .right {
   flex: 1;
   min-width: 0;

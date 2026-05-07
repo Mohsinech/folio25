@@ -41,26 +41,6 @@ const Home = () => {
 
       {/* Project Section */}
       <section className={styles.projects}>
-        <div className={styles.flex}>
-          <h3>
-            Costum work on request{" "}
-            <ScrambleLink
-              href="/contact"
-              className={styles.emailLink}
-              label="email"
-            />
-          </h3>
-
-          <h3>
-            View in{" "}
-            <ScrambleLink
-              href="/contact"
-              className={styles.emailLink}
-              label="Grid"
-            />{" "}
-            mode.
-          </h3>
-        </div>
         {/*  */}
         <div className={styles.space}>
           {projectData.map((data) => (

@@ -12,7 +12,7 @@ import {
 import ScrambleSimple from "@/utils/ScrambleSimple/ScrambleSimple";
 import { ScrambleLink } from "@/utils";
 import Link from "next/link";
-import LatestProjectModal from "@/components/LatestProjectModal";
+import ModalMobile from "@/components/screen/Modal/ModalMobile";
 import BlurText from "@/components/BlurText";
 
 //
@@ -170,7 +170,7 @@ const MobileHeader = () => {
       </motion.header>
 
       {/* Latest Project Modal */}
-      <LatestProjectModal
+      <ModalMobile
         isOpen={isLatestProjectModalOpen}
         onClose={() => setIsLatestProjectModalOpen(false)}
       />
