@@ -50,6 +50,22 @@
   background-color: #333;
 }
 
+@media (max-width: 1024px) {
+  .popup {
+    width: 94vw;
+    height: 90dvh;
+  }
+}
+
+@media (max-width: 600px) {
+  .popup {
+    width: 94vw;
+    height: 90dvh;
+    padding: 0.8rem;
+    gap: 1.5rem;
+  }
+}
+
 /*  TOP */
 .closeBtn {
   background-color: #e6e6e680;
@@ -115,6 +131,62 @@
   overflow: hidden;
 }
 
+@media (max-width: 1024px) {
+  .images {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .imagePlaceholder {
+    height: 45dvh;
+    flex: 0 0 45dvh;
+  }
+
+  .body h1 {
+    font-size: 2.8rem;
+  }
+
+  .details p {
+    font-size: 0.95rem;
+  }
+
+  .body .description {
+    font-size: 1.3rem;
+    width: 95%;
+  }
+}
+
+@media (max-width: 600px) {
+  .body {
+    gap: 1.8em;
+  }
+
+  .body h1 {
+    font-size: 2rem;
+  }
+
+  .details p {
+    font-size: 0.75rem;
+  }
+
+  .body .description {
+    font-size: 1rem;
+    line-height: 1.4;
+    width: 100%;
+    /* text-align: justify; */
+  }
+
+  .images {
+    gap: 0.5rem;
+  }
+
+  .imagePlaceholder {
+    height: 40dvh;
+    flex: 0 0 40dvh;
+  }
+}
+
 /* ReadMore */
 .readMore {
   background-color: #e6e6e680;
@@ -134,4 +206,24 @@
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: -0.045rem;
+}
+
+@media (max-width: 1024px) {
+  .readMore {
+    padding: 10px 12px;
+  }
+
+  .readMore button {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .readMore {
+    padding: 8px 10px;
+  }
+
+  .readMore button {
+    font-size: 0.9rem;
+  }
 }
