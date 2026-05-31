@@ -4,6 +4,8 @@ import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import styles from "./project.module.css";
 import ScrambleSimple from "@/utils/ScrambleSimple/ScrambleSimple";
+import Image from "next/image";
+import { ScrambleLink } from "@/utils";
 
 interface projectProps {
   id: number;
@@ -13,6 +15,7 @@ interface projectProps {
   location: string;
   year: string;
   description: string;
+  images: string[];
   preview: string;
   isOpen: boolean;
   hasActive: boolean;
@@ -27,7 +30,9 @@ const Project = ({
   year,
   description,
   location,
+  preview,
   isOpen,
+  images,
   hasActive,
   onToggle,
 }: projectProps) => {
@@ -79,8 +84,20 @@ const Project = ({
             <h1>{description}</h1>
 
             <button className={styles.btn}>
-              <ScrambleSimple label="Live site" />
+              <ScrambleLink label="Live site" href={preview} />
             </button>
+
+            <div className={styles.imageGallery}>
+              <div className={styles.wrapper}>
+                <Image src={images[0]} alt={title} fill />
+              </div>
+              <div className={styles.wrapper}>
+                <Image src={images[1]} alt={title} fill />
+              </div>
+              <div className={styles.wrapper}>
+                <Image src={images[2]} alt={title} fill />
+              </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
