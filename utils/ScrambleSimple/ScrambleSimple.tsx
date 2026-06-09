@@ -2,7 +2,6 @@
 
 import React, { useRef, useState } from "react";
 import { motion, HTMLMotionProps } from "framer-motion";
-import Link from "next/link";
 
 // 1. Scramble Config
 const CYCLES_PER_LETTER = 2;

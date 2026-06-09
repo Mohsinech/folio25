@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 
 interface AnimatedTextProps {
   text: string;
@@ -10,7 +10,7 @@ interface AnimatedTextProps {
 
 const AnimatedText = ({ text, className }: AnimatedTextProps) => {
   //
-  const revealVars = {
+  const revealVars: Variants = {
     initial: {
       y: "120%",
       opacity: 0,
@@ -22,7 +22,7 @@ const AnimatedText = ({ text, className }: AnimatedTextProps) => {
       skewY: 0,
       transition: {
         duration: 2,
-        ease: [0.87, 0.13, 0, 1],
+        ease: [0.87, 0.13, 0, 1] as const,
         delay: i * 0.05,
       },
     }),

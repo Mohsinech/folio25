@@ -45,8 +45,11 @@ export default function ViewTransitionHandler() {
           try {
             sessionStorage.setItem("vt-active", "1");
           } catch {}
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          (document as any).startViewTransition(() => {
+          (
+            document as unknown as {
+              startViewTransition: (cb: () => void) => void;
+            }
+          ).startViewTransition(() => {
             navigate();
           });
         } catch {

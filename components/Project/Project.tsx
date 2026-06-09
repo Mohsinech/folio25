@@ -83,19 +83,19 @@ const Project = ({
           >
             <h1>{description}</h1>
 
-            <button className={styles.btn}>
+            <div className={styles.btn}>
               <ScrambleLink label="Live site" href={preview} />
-            </button>
+            </div>
 
             <div className={styles.imageGallery}>
               <div className={styles.wrapper}>
-                <Image src={images[0]} alt={title} fill />
+                <Image src={images[0]} alt={title} fill sizes="33vw" />
               </div>
               <div className={styles.wrapper}>
-                <Image src={images[1]} alt={title} fill />
+                <Image src={images[1]} alt={title} fill sizes="33vw" />
               </div>
               <div className={styles.wrapper}>
-                <Image src={images[2]} alt={title} fill />
+                <Image src={images[2]} alt={title} fill sizes="33vw" />
               </div>
             </div>
           </motion.div>

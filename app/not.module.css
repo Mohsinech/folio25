@@ -1,31 +1,80 @@
 .notFoundContainer {
   height: 100dvh;
   width: 100vw;
-  background-color: #121212;
+  background-color: #111;
   position: relative;
   overflow: hidden;
+  color: #f1f1f1;
+  padding: 2rem;
+}
+
+.notFoundContainer::before,
+.notFoundContainer::after {
+  position: absolute;
+  inset: 2rem;
+  content: "";
+  pointer-events: none;
+}
+
+.notFoundContainer::before {
+  border-top: 1px solid rgba(241, 241, 241, 0.16);
+  border-bottom: 1px solid rgba(241, 241, 241, 0.16);
+}
+
+.notFoundContainer::after {
+  background-image:
+    linear-gradient(rgba(241, 241, 241, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(241, 241, 241, 0.08) 1px, transparent 1px);
+  background-size: 25% 100%, 100% 25%;
+  mask-image: linear-gradient(to bottom, transparent, #000 20%, #000 80%, transparent);
+}
+
+.grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.grid p,
+.index span,
+.eyebrow {
+  color: #8f8f8f;
+  font-family: "jet", sans-serif;
+  font-size: 0.68rem;
+  line-height: 1.3;
+  text-transform: uppercase;
 }
 
 .centeredText {
-  text-align: center;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 9999999;
+  z-index: 2;
+  width: min(900px, calc(100vw - 4rem));
 }
 
 .centeredText h1 {
-  color: #f1f1f1;
   font-family: "mon", sans-serif;
-  font-size: 2rem;
+  font-size: clamp(3rem, 10vw, 9rem);
+  line-height: 0.9;
+  max-width: 8ch;
 }
 
 .centeredText h3 {
-  color: #f1f1f1;
-  font-family: "mon", sans-serif;
-  font-size: 1.5rem;
+  color: #cfcfcf;
+  font-family: "mori", sans-serif;
+  font-size: clamp(1rem, 1.8vw, 1.7rem);
+  line-height: 1.15;
+  max-width: 28rem;
+  margin-top: 1.5rem;
   margin-bottom: 2rem;
+}
+
+.eyebrow {
+  margin-bottom: 1rem;
 }
 
 .teleportLink {
@@ -52,4 +101,37 @@
 .teleportLink:hover::after {
   transform: scaleX(0);
   transform-origin: left;
+}
+
+.index {
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
+  left: 2rem;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  border-top: 1px solid rgba(241, 241, 241, 0.16);
+  padding-top: 1rem;
+}
+
+@media (max-width: 760px) {
+  .notFoundContainer {
+    padding: 1rem;
+  }
+
+  .notFoundContainer::before,
+  .notFoundContainer::after {
+    inset: 1rem;
+  }
+
+  .grid,
+  .index {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .centeredText {
+    width: calc(100vw - 2rem);
+  }
 }

@@ -4,6 +4,7 @@ import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import styles from "./mobile.module.css";
 import ScrambleSimple from "@/utils/ScrambleSimple/ScrambleSimple";
+import { ScrambleLink } from "@/utils";
 
 interface projectProps {
   id: number;
@@ -25,6 +26,7 @@ const ProjectMobile = ({
   client,
   year,
   description,
+  preview,
   isOpen,
   hasActive,
   onToggle,
@@ -75,9 +77,9 @@ const ProjectMobile = ({
           >
             <h1>{description}</h1>
 
-            <button className={styles.btn}>
-              <ScrambleSimple label="Live site" />
-            </button>
+            <div className={styles.btn}>
+              <ScrambleLink label="Live site" href={preview} />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

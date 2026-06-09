@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import Project from "@/components/Project/Project";
 import { projectData } from "./data";
 import styles from "./page.module.css";
-import { ScrambleLink } from "@/utils";
 import ProjectMobile from "@/components/screen/Project/ProjectMobile";
 
 const Home = () => {

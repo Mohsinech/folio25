@@ -80,9 +80,17 @@ const Header = () => {
         <nav className={styles.nav}>
           {/* latest project */}
           <div className={styles.latest}>
-            <button className={styles.btn} onClick={handleLatestProjectOpen}>
+            <motion.button
+              className={`${styles.btn} ${
+                isLatestProjectModalOpen ? styles.btnActive : ""
+              }`}
+              onClick={handleLatestProjectOpen}
+              whileTap={{ scale: 0.94, y: 1 }}
+              transition={{ duration: 0.25, ease: [0.65, 0.05, 0, 1] }}
+              type="button"
+            >
               <ScrambleSimple label="Latest Project" />
-            </button>
+            </motion.button>
           </div>
           {/* Let's talk */}
           <div className={styles.talk}>
@@ -176,18 +184,14 @@ const Header = () => {
       </motion.header>
 
       {/* Latest Project Modal */}
-      {isLatestProjectModalOpen &&
-        (latestModalVariant === "mobile" ? (
-          <ModalMobile
-            isOpen={isLatestProjectModalOpen}
-            onClose={() => setIsLatestProjectModalOpen(false)}
-          />
-        ) : (
-          <LatestProjectModal
-            isOpen={isLatestProjectModalOpen}
-            onClose={() => setIsLatestProjectModalOpen(false)}
-          />
-        ))}
+      <ModalMobile
+        isOpen={isLatestProjectModalOpen && latestModalVariant === "mobile"}
+        onClose={() => setIsLatestProjectModalOpen(false)}
+      />
+      <LatestProjectModal
+        isOpen={isLatestProjectModalOpen && latestModalVariant === "desktop"}
+        onClose={() => setIsLatestProjectModalOpen(false)}
+      />
     </>
   );
 };

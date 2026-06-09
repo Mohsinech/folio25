@@ -26,6 +26,7 @@
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
   overflow-y: auto;
   overflow-x: hidden;
+  scroll-behavior: smooth;
   pointer-events: auto;
   min-height: 0;
   overscroll-behavior: contain;
@@ -200,7 +201,8 @@
   width: fit-content;
 }
 
-.readMore button {
+.readMore a,
+.readMore h2 {
   color: #171717;
   font-family: "jet", sans-serif;
   font-size: 0.9rem;
@@ -213,7 +215,8 @@
     padding: 10px 12px;
   }
 
-  .readMore button {
+  .readMore a,
+  .readMore h2 {
     font-size: 1rem;
   }
 }
@@ -223,7 +226,8 @@
     padding: 8px 10px;
   }
 
-  .readMore button {
+  .readMore a,
+  .readMore h2 {
     font-size: 0.9rem;
   }
 }

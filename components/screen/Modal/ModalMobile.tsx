@@ -13,6 +13,34 @@ interface LatestProjectModalProps {
 }
 
 const LatestProjectModal = ({ isOpen, onClose }: LatestProjectModalProps) => {
+  const contentItem = {
+    hidden: { y: 24, opacity: 0, filter: "blur(8px)" },
+    visible: (delay = 0) => ({
+      y: 0,
+      opacity: 1,
+      filter: "blur(0px)",
+      transition: {
+        duration: 0.7,
+        delay,
+        ease: [0.65, 0.05, 0, 1] as const,
+      },
+    }),
+  };
+
+  const imageItem = {
+    hidden: { y: 36, opacity: 0, scale: 1.04 },
+    visible: (delay = 0) => ({
+      y: 0,
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.8,
+        delay,
+        ease: [0.65, 0.05, 0, 1] as const,
+      },
+    }),
+  };
+
   useEffect(() => {
     if (!isOpen) return;
 
@@ -39,18 +67,36 @@ const LatestProjectModal = ({ isOpen, onClose }: LatestProjectModalProps) => {
         <>
           <motion.div
             className={styles.backdrop}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            animate={{ opacity: 1, backdropFilter: "blur(4px)" }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0.35, ease: [0.65, 0.05, 0, 1] }}
           />
           <motion.div
             className={styles.popup}
-            initial={{ scale: 0.8, opacity: 0, x: "-50%", y: "-50%" }}
-            animate={{ scale: 1, opacity: 1, x: "-50%", y: "-50%" }}
-            exit={{ scale: 0.8, opacity: 0, x: "-50%", y: "-50%" }}
-            transition={{ duration: 0.3, ease: [0.65, 0.05, 0, 1] }}
+            initial={{
+              clipPath: "polygon(0 0, 100% 0, 100% 8%, 0 0)",
+              opacity: 0,
+              scale: 0.96,
+              x: "-50%",
+              y: "-48%",
+            }}
+            animate={{
+              clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+              opacity: 1,
+              scale: 1,
+              x: "-50%",
+              y: "-50%",
+            }}
+            exit={{
+              clipPath: "polygon(0 0, 100% 0, 100% 12%, 0 0)",
+              opacity: 0,
+              scale: 0.98,
+              x: "-50%",
+              y: "-48%",
+            }}
+            transition={{ duration: 0.75, ease: [0.65, 0.05, 0, 1] }}
             onClick={(e) => e.stopPropagation()}
             onWheel={(e) => e.stopPropagation()}
           >
@@ -64,7 +110,7 @@ const LatestProjectModal = ({ isOpen, onClose }: LatestProjectModalProps) => {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                   stroke="currentColor"
                   className="size-6"
                 >
@@ -78,78 +124,125 @@ const LatestProjectModal = ({ isOpen, onClose }: LatestProjectModalProps) => {
             </div>
 
             <div className={styles.body}>
-              <h1>
+              <motion.h1
+                variants={contentItem}
+                initial="hidden"
+                animate="visible"
+                custom={0.12}
+              >
                 <BlurText
-                  text="Project Title"
+                  text="Bentofolio"
                   delay={100}
                   stepDuration={0.4}
                   animateBy="words"
                   direction="top"
                 />
-              </h1>
-              <div className={styles.details}>
-                <p>Project detail part HHHHHHHHHHH</p>
-                <p>Project detail part two</p>
-                <p>Project detail part three</p>
-              </div>
+              </motion.h1>
+              <motion.div
+                className={styles.details}
+                variants={contentItem}
+                initial="hidden"
+                animate="visible"
+                custom={0.22}
+              >
+                <p>Portfolio builder</p>
+                <p>Product design / frontend</p>
+                <p>Next.js, motion, responsive systems</p>
+              </motion.div>
 
-              <p className={styles.description}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
-                incidunt temporibus assumenda quibusdam minus veritatis, est
-                impedit qui asperiores harum omnis nobis corrupti et tempore
-                fugiat hic quam alias aspernatur perferendis esse debitis eius
-                culpa. Esse, eveniet suscipit! Culpa, atque!
+              <motion.p
+                className={styles.description}
+                variants={contentItem}
+                initial="hidden"
+                animate="visible"
+                custom={0.32}
+              >
+                Bentofolio is a minimal portfolio experience built around
+                modular blocks, polished motion, and a focused publishing flow
+                for creative developers and designers.
                 <br />
                 <br />
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit
-                porro non mollitia illo voluptatem, perferendis minima sapiente
-                aut consectetur repellendus!
-              </p>
+                It keeps the interface quiet while giving each screen enough
+                structure to feel intentional: hero, login, pricing, and project
+                presentation.
+              </motion.p>
 
-              <div className={styles.readMore}>
-                <button>
-                  <ScrambleLink
-                    data-vt="true"
-                    view-transition-name="read-more"
-                    href="/latest"
-                    label="Read more"
-                  />
-                </button>
-              </div>
+              <motion.div
+                className={styles.readMore}
+                variants={contentItem}
+                initial="hidden"
+                animate="visible"
+                custom={0.42}
+              >
+                <ScrambleLink
+                  data-vt="true"
+                  style={{ viewTransitionName: "read-more" }}
+                  href="/latest"
+                  label="Read more"
+                />
+              </motion.div>
             </div>
 
             <div className={styles.images}>
-              <div className={styles.imagePlaceholder}>
+              <motion.div
+                className={styles.imagePlaceholder}
+                variants={imageItem}
+                initial="hidden"
+                animate="visible"
+                custom={0.16}
+              >
                 <Image
-                  src="/assets/images/placeholder.jpeg"
-                  alt="Project Image"
+                  src="/media/bentofolio/hero.jpg"
+                  alt="Bentofolio hero screen"
                   fill
+                  sizes="94vw"
                 />
-              </div>
+              </motion.div>
 
-              <div className={styles.imagePlaceholder}>
+              <motion.div
+                className={styles.imagePlaceholder}
+                variants={imageItem}
+                initial="hidden"
+                animate="visible"
+                custom={0.24}
+              >
                 <Image
-                  src="/assets/images/placeholder.jpeg"
-                  alt="Project Image"
+                  src="/media/bentofolio/login.jpg"
+                  alt="Bentofolio login screen"
                   fill
+                  sizes="94vw"
                 />
-              </div>
+              </motion.div>
 
-              <div className={styles.imagePlaceholder}>
+              <motion.div
+                className={styles.imagePlaceholder}
+                variants={imageItem}
+                initial="hidden"
+                animate="visible"
+                custom={0.32}
+              >
                 <Image
-                  src="/assets/images/placeholder.jpeg"
-                  alt="Project Image"
+                  src="/media/bentofolio/pricing.jpg"
+                  alt="Bentofolio pricing screen"
                   fill
+                  sizes="94vw"
                 />
-              </div>
+              </motion.div>
 
-              <div className={styles.imagePlaceholder}>
+              <motion.div
+                className={styles.imagePlaceholder}
+                variants={imageItem}
+                initial="hidden"
+                animate="visible"
+                custom={0.4}
+              >
                 <Image
                   src="/assets/images/placeholder.jpeg"
-                  alt="Project Image"
+                  alt="Bentofolio additional project preview"
                   fill
+                  sizes="94vw"
                 />
-              </div>
+              </motion.div>
             </div>
           </motion.div>
         </>

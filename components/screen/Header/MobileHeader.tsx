@@ -4,22 +4,17 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import styles from "./header.module.css";
 import {
-  AnimatePresence,
   motion,
   useScroll,
   useTransform,
 } from "framer-motion";
 import ScrambleSimple from "@/utils/ScrambleSimple/ScrambleSimple";
 import { ScrambleLink } from "@/utils";
-import Link from "next/link";
 import ModalMobile from "@/components/screen/Modal/ModalMobile";
-import BlurText from "@/components/BlurText";
 
 //
 
 const MobileHeader = () => {
-  const [isSocialsOpen, setIsSocialsOpen] = useState(false);
-
   const [isLatestProjectModalOpen, setIsLatestProjectModalOpen] =
     useState(false);
   const scrollY = useScroll().scrollY;
@@ -47,10 +42,6 @@ const MobileHeader = () => {
     return () => window.clearTimeout(id);
   }, [pathname]);
 
-  const handleSocialsToggle = () => {
-    setIsSocialsOpen((prev) => !prev);
-  };
-
   // Conditions
 
   return (
@@ -72,12 +63,17 @@ const MobileHeader = () => {
         <nav className={styles.nav}>
           {/* latest project */}
           <div className={styles.latest}>
-            <button
-              className={styles.btn}
+            <motion.button
+              className={`${styles.btn} ${
+                isLatestProjectModalOpen ? styles.btnActive : ""
+              }`}
               onClick={() => setIsLatestProjectModalOpen(true)}
+              whileTap={{ scale: 0.94, y: 1 }}
+              transition={{ duration: 0.25, ease: [0.65, 0.05, 0, 1] }}
+              type="button"
             >
               <ScrambleSimple label="Latest project" />
-            </button>
+            </motion.button>
           </div>
           {/* Let's talk */}
           <div className={styles.talk}>
