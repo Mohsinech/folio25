@@ -8,11 +8,11 @@ import MobileHeader from "@/components/screen/Header/MobileHeader";
 export const metadata: Metadata = {
   metadataBase: new URL("https://mohssinechedgane.me"),
   title: {
-    default: "Mohssine Chedgane • Full-Stack Creative Developer in Morocco",
+    default: "Mohssine Chedgane • Freelance Designer & Developer",
     template: "%s • Mohssine Chedgane",
   },
   description:
-    "Mohssine Chedgane is a Morocco-based full-stack creative developer building fast, polished websites, portfolios, e-commerce experiences, and product interfaces.",
+    "Mohssine Chedgane is a Morocco-based freelance designer and developer building fast, polished websites, portfolios, e-commerce experiences, and product interfaces.",
   applicationName: "Mohssine Chedgane Portfolio",
   authors: [{ name: "Mohssine Chedgane", url: "https://mohssinechedgane.me" }],
   creator: "Mohssine Chedgane",
@@ -35,15 +35,15 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://mohssinechedgane.me",
     siteName: "Mohssine Chedgane",
-    title: "Mohssine Chedgane • Full-Stack Creative Developer in Morocco",
+    title: "Mohssine Chedgane • Freelance Designer & Developer",
     description:
-      "Morocco-based full-stack creative developer building fast, polished websites, e-commerce experiences, portfolios, and product interfaces.",
+      "Morocco-based freelance designer and developer building fast, polished websites, e-commerce experiences, portfolios, and product interfaces.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mohssine Chedgane • Full-Stack Creative Developer in Morocco",
+    title: "Mohssine Chedgane • Freelance Designer & Developer",
     description:
-      "Morocco-based full-stack creative developer building fast, polished websites, portfolios, and product interfaces.",
+      "Morocco-based freelance designer and developer building fast, polished websites, portfolios, and product interfaces.",
   },
   robots: {
     index: true,
@@ -75,7 +75,7 @@ export default function RootLayout({
               "@type": "Person",
               name: "Mohssine Chedgane",
               url: "https://mohssinechedgane.me",
-              jobTitle: "Full-Stack Creative Developer",
+              jobTitle: "Freelance Designer & Developer",
               address: {
                 "@type": "PostalAddress",
                 addressCountry: "MA",

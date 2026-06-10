@@ -232,21 +232,6 @@ const LatestProjectModal = ({ isOpen, onClose }: LatestProjectModalProps) => {
                   sizes="(min-width: 1024px) 55vw, 94vw"
                 />
               </motion.div>
-
-              <motion.div
-                className={styles.imagePlaceholder}
-                variants={imageItem}
-                initial="hidden"
-                animate="visible"
-                custom={0.4}
-              >
-                <Image
-                  src="/assets/images/placeholder.jpeg"
-                  alt="Bentofolio additional project preview"
-                  fill
-                  sizes="(min-width: 1024px) 55vw, 94vw"
-                />
-              </motion.div>
             </div>
           </motion.div>
         </>

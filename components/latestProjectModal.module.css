@@ -118,14 +118,16 @@
 .imagePlaceholder {
   width: 100%;
   position: relative;
-  height: 75dvh;
-  flex: 0 0 75dvh;
+  aspect-ratio: 16 / 10;
+  height: auto;
+  flex: 0 0 auto;
   border-radius: 10px;
   overflow: hidden;
+  background-color: #111;
 }
 
 .imagePlaceholder img {
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
 }
 

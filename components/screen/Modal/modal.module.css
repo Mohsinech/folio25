@@ -126,10 +126,17 @@
 .imagePlaceholder {
   width: 100%;
   position: relative;
-  height: 45dvh;
-  flex: 0 0 45dvh;
+  aspect-ratio: 4 / 3;
+  height: auto;
+  flex: 0 0 auto;
   border-radius: 10px;
   overflow: hidden;
+  background-color: #111;
+}
+
+.imagePlaceholder img {
+  object-fit: contain;
+  object-position: center;
 }
 
 @media (max-width: 1024px) {
@@ -140,8 +147,9 @@
   }
 
   .imagePlaceholder {
-    height: 45dvh;
-    flex: 0 0 45dvh;
+    aspect-ratio: 4 / 3;
+    height: auto;
+    flex: 0 0 auto;
   }
 
   .body h1 {
@@ -183,8 +191,9 @@
   }
 
   .imagePlaceholder {
-    height: 40dvh;
-    flex: 0 0 40dvh;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    flex: 0 0 auto;
   }
 }
 
