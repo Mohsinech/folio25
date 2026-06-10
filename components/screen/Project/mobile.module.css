@@ -152,3 +152,38 @@
   letter-spacing: -0.045rem;
   /* font-weight: 600; */
 }
+
+.imageGallery {
+  width: 100%;
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  overscroll-behavior-x: contain;
+}
+
+.imageGallery .wrapper {
+  flex: 0 0 min(340px, 85vw);
+  width: min(340px, 85vw);
+  height: 214px;
+  position: relative;
+  overflow: hidden;
+  background-color: #111;
+  border-radius: 8px;
+}
+
+.imageGallery .wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+@media (max-width: 600px) {
+  .imageGallery .wrapper {
+    flex-basis: 85vw;
+    width: 85vw;
+    height: auto;
+    aspect-ratio: 16 / 10;
+  }
+}

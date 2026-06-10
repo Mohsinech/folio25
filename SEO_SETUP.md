@@ -39,17 +39,17 @@ Secondary:
 
 ## Google Search Console
 
-1. Add the domain property for `mohssinechedgane.me`.
+1. Add the domain property for `mohssinechedgane.com`.
 2. Verify ownership with DNS if possible.
 3. Submit the sitemap:
 
-   `https://mohssinechedgane.me/sitemap.xml`
+   `https://mohssinechedgane.com/sitemap.xml`
 
 4. Request indexing for:
 
-   - `https://mohssinechedgane.me/`
-   - `https://mohssinechedgane.me/latest`
-   - `https://mohssinechedgane.me/contact`
+   - `https://mohssinechedgane.com/`
+   - `https://mohssinechedgane.com/latest`
+   - `https://mohssinechedgane.com/contact`
 
 5. Check the Pages report after deployment to confirm pages are indexed.
 
@@ -89,8 +89,8 @@ npm run build
 After deploy:
 
 - Open the live site and confirm the page title in the browser tab.
-- Test `https://mohssinechedgane.me/robots.txt`.
-- Test `https://mohssinechedgane.me/sitemap.xml`.
+- Test `https://mohssinechedgane.com/robots.txt`.
+- Test `https://mohssinechedgane.com/sitemap.xml`.
 - Inspect the homepage source for JSON-LD.
 - Run Lighthouse or PageSpeed Insights.
 - Re-submit changed pages in Google Search Console when major metadata or content changes are shipped.

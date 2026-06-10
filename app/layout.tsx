@@ -4,9 +4,10 @@ import { Header } from "@/components/layouts";
 import { SmoothScroll } from "@/utils/index";
 import ViewTransitionHandler from "@/components/ViewTransitionHandler";
 import MobileHeader from "@/components/screen/Header/MobileHeader";
+import Preloader from "@/components/Preloader";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://mohssinechedgane.me"),
+  metadataBase: new URL("https://mohssinechedgane.com"),
   title: {
     default: "Mohssine Chedgane • Freelance Designer & Developer",
     template: "%s • Mohssine Chedgane",
@@ -14,7 +15,9 @@ export const metadata: Metadata = {
   description:
     "Mohssine Chedgane is a Morocco-based freelance designer and developer building fast, polished websites, portfolios, e-commerce experiences, and product interfaces.",
   applicationName: "Mohssine Chedgane Portfolio",
-  authors: [{ name: "Mohssine Chedgane", url: "https://mohssinechedgane.me" }],
+  authors: [
+    { name: "Mohssine Chedgane", url: "https://mohssinechedgane.com" },
+  ],
   creator: "Mohssine Chedgane",
   publisher: "Mohssine Chedgane",
   alternates: {
@@ -33,7 +36,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://mohssinechedgane.me",
+    url: "https://mohssinechedgane.com",
     siteName: "Mohssine Chedgane",
     title: "Mohssine Chedgane • Freelance Designer & Developer",
     description:
@@ -67,6 +70,7 @@ export default function RootLayout({
     <html lang="en">
       <link rel="icon" type="icon/icon-x" href="/favicon.ico" />
       <body>
+        <Preloader />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -74,7 +78,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               name: "Mohssine Chedgane",
-              url: "https://mohssinechedgane.me",
+              url: "https://mohssinechedgane.com",
               jobTitle: "Freelance Designer & Developer",
               address: {
                 "@type": "PostalAddress",

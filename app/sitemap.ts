@@ -4,7 +4,7 @@ const routes = ["", "/latest", "/contact"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((route) => ({
-    url: `https://mohssinechedgane.me${route}`,
+    url: `https://mohssinechedgane.com${route}`,
     lastModified: new Date(),
     changeFrequency: route === "" ? "weekly" : "monthly",
     priority: route === "" ? 1 : 0.8,

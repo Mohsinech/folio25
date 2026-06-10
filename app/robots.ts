@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://mohssinechedgane.me/sitemap.xml",
+    sitemap: "https://mohssinechedgane.com/sitemap.xml",
   };
 }
