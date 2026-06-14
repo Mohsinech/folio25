@@ -129,24 +129,41 @@ export default function LatestPage() {
       </section>
 
       <section className={styles.gallery}>
-        {images.map((image, index) => (
-          <motion.div
-            className={styles.galleryItem}
-            key={image.src}
-            variants={reveal}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            custom={index * 0.08}
-          >
-            <Image
-              src={image.src}
-              alt={image.alt}
-              fill
-              sizes={index === 0 ? "100vw" : "(min-width: 900px) 50vw, 100vw"}
-            />
-          </motion.div>
-        ))}
+        <motion.div
+          className={styles.galleryItem}
+          variants={reveal}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+        >
+          <Image
+            src={images[0].src}
+            alt={images[0].alt}
+            fill
+            sizes="(min-width: 900px) 66vw, 100vw"
+          />
+        </motion.div>
+
+        <div className={styles.galleryStack}>
+          {images.slice(1).map((image, index) => (
+            <motion.div
+              className={styles.galleryItem}
+              key={image.src}
+              variants={reveal}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-80px" }}
+              custom={0.08 + index * 0.08}
+            >
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                sizes="(min-width: 900px) 34vw, 100vw"
+              />
+            </motion.div>
+          ))}
+        </div>
       </section>
 
       <section className={styles.notes}>

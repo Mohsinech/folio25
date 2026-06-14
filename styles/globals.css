@@ -173,21 +173,6 @@ html.lenis body {
   font-display: swap;
 }
 
-/* PP Mori */
-@font-face {
-  font-family: "mori";
-  src: url("/assets/fonts/mori/PPMori-Extralight.woff2");
-  font-weight: 200;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "mori";
-  src: url("/assets/fonts/mori/PPMori-Regular.woff2");
-  font-weight: 500;
-  font-display: swap;
-}
-
 /* JetBrains */
 @font-face {
   font-family: "jet";
@@ -236,4 +221,17 @@ html.lenis body {
   font-family: "sato";
   src: url("/assets/fonts/satoshi/Satoshi-Bold.woff2") format("woff2");
   font-weight: 800;
+}
+
+/* Saans */
+@font-face {
+  font-family: "saans";
+  src: url("/assets/fonts/saans/Saans-Medium.woff2") format("woff2");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "saans";
+  src: url("/assets/fonts/saans/Saans-Medium.woff2") format("woff2");
+  font-weight: 600;
 }

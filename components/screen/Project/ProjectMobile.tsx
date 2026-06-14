@@ -40,13 +40,17 @@ const ProjectMobile = ({
   };
 
   const imageReveal = {
-    hidden: { y: 24, opacity: 0, clipPath: "polygon(0 0, 100% 0, 100% 8%, 0 0)" },
+    hidden: {
+      y: 28,
+      opacity: 0,
+      clipPath: "polygon(0 0, 100% 0, 100% 8%, 0 0)",
+    },
     visible: (delay = 0) => ({
       y: 0,
       opacity: 1,
       clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
       transition: {
-        duration: 0.7,
+        duration: 0.75,
         delay,
         ease: [0.65, 0.05, 0, 1] as const,
       },
@@ -85,18 +89,18 @@ const ProjectMobile = ({
           <motion.div
             className={styles.contentData}
             initial={{
-              height: 0,
               opacity: 0,
+              y: 16,
               clipPath: "polygon(0 0, 100% 0, 100% 4%, 0 0)",
             }}
             animate={{
-              height: "auto",
               opacity: 1,
+              y: 0,
               clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
             }}
             exit={{
-              height: 0,
               opacity: 0,
+              y: 16,
               clipPath: "polygon(0 0, 100% 0, 100% 4%, 0 0)",
             }}
             transition={contentTransition}
@@ -114,7 +118,7 @@ const ProjectMobile = ({
                   variants={imageReveal}
                   initial="hidden"
                   animate="visible"
-                  custom={0.1 + index * 0.08}
+                  custom={0.12 + index * 0.08}
                   key={image}
                 >
                   <Image src={image} alt={title} fill sizes="85vw" />

@@ -69,9 +69,10 @@
 }
 
 .contentData h1 {
-  font-family: "mori", sans-serif;
-  font-size: 1rem;
-  width: 50%;
+  font-family: "saans", sans-serif;
+  font-weight: 500;
+  font-size: 1.25rem;
+  width: 60%;
   padding-top: 1.5rem;
 }
 

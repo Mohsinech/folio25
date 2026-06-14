@@ -1,7 +1,7 @@
 .main {
   width: 100%;
   min-height: 100dvh;
-  padding: 0 2rem 2rem;
+  padding: 2rem clamp(2rem, 5vw, 5rem);
   color: #171717;
 }
 
@@ -37,6 +37,7 @@
   grid-template-columns: 2fr 1.5fr;
   align-items: start;
   gap: 2rem;
+  margin-bottom: 2rem;
 }
 
 .heroContent h1 {
@@ -44,7 +45,7 @@
   font-family: "mon", sans-serif;
   font-size: clamp(4.5rem, 11vw, 14rem);
   line-height: 0.85;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   font-weight: 800;
   max-width: 100%;
   overflow-wrap: anywhere;
@@ -52,7 +53,7 @@
 
 .heroContent p,
 .statement p {
-  font-family: "mori", sans-serif;
+  font-family: "saans", sans-serif;
   font-size: clamp(1.15rem, 1.8vw, 2rem);
   line-height: 1.15;
   color: #262626;
@@ -63,24 +64,28 @@
   max-width: 34rem;
 }
 
-.cover,
-.gallery {
+.cover {
   width: 100%;
+  height: 90dvh;
+  /* overflow: hidden; */
+  position: relative;
+  padding: 3rem;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .coverImage,
 .galleryItem {
   position: relative;
   width: 100%;
-  overflow: hidden;
-  border-radius: 8px;
-  background: #111;
+  /* border-radius: 8px; */
 }
 
 .coverImage {
-  aspect-ratio: 16 / 9;
-  height: auto;
-  max-height: 82dvh;
+  overflow: hidden;
+  height: 100%;
 }
 
 .coverImage img,
@@ -108,27 +113,49 @@
 
 .detail h2 {
   margin-top: 0.8rem;
-  font-family: "mori", sans-serif;
-  font-size: 1.05rem;
+  font-family: "sato", sans-serif;
+  font-size: 0.95rem;
   line-height: 1.2;
   font-weight: 500;
 }
 
 .gallery {
+  width: 100%;
+  position: relative;
+  padding: 0;
+  background-color: transparent;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 2fr 1fr;
   gap: 1rem;
+  height: auto;
+  overflow: visible;
+  align-items: stretch;
+  justify-content: initial;
 }
 
 .galleryItem {
   aspect-ratio: 16 / 10;
   height: auto;
+  overflow: hidden;
+  background-color: #fff;
+  padding: 2rem;
 }
 
 .galleryItem:first-child {
-  grid-column: 1 / -1;
-  aspect-ratio: 16 / 9;
+  grid-column: auto;
+  aspect-ratio: 16 / 10;
   height: auto;
+}
+
+.galleryItem img {
+  padding: 2rem;
+}
+
+.galleryStack {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  min-width: 0;
 }
 
 .notes {
@@ -143,9 +170,9 @@
 
 .notes h2 {
   margin-top: 1rem;
-  font-family: "mori", sans-serif;
-  font-size: clamp(1.35rem, 2.6vw, 3rem);
-  line-height: 1.05;
+  font-family: "saans", sans-serif;
+  font-size: clamp(1.35rem, 2.2vw, 3rem);
+  line-height: 1.4;
   font-weight: 500;
 }
 
@@ -188,13 +215,28 @@
     max-width: 100%;
   }
 
+  .cover {
+    height: auto;
+    padding: 2rem;
+  }
+
   .coverImage {
     aspect-ratio: 4 / 3;
+    height: auto;
   }
 
   .galleryItem,
   .galleryItem:first-child {
     aspect-ratio: 4 / 3;
+    height: auto;
+  }
+
+  .gallery {
+    padding: 0;
+  }
+
+  .galleryStack {
+    grid-template-columns: 1fr;
   }
 
   .info {
@@ -212,7 +254,22 @@
 }
 
 @media (max-width: 520px) {
+  .hero {
+    min-height: 58dvh;
+    gap: 2rem;
+    padding-top: 5rem;
+  }
+
+  .heroContent {
+    grid-template-columns: 1fr;
+  }
+
+  .heroContent > p {
+    grid-column: 1;
+  }
+
   .heroContent h1 {
+    grid-column: 1;
     font-size: clamp(2.8rem, 16vw, 4.4rem);
   }
 
@@ -226,5 +283,17 @@
   .galleryItem,
   .galleryItem:first-child {
     aspect-ratio: 1 / 1;
+  }
+
+  .cover {
+    padding: 1rem;
+  }
+
+  .galleryItem {
+    padding: 1rem;
+  }
+
+  .galleryItem img {
+    padding: 1rem;
   }
 }
