@@ -53,6 +53,7 @@ export default function HomeGallery({ projects }: { projects: ProjectInfo[] }) {
       startT = target;
       vel = 0;
       wrap.dataset.dragging = "true";
+      wrap.dataset.suppressClick = "false";
     };
     const onMove = (e: PointerEvent) => {
       if (!down) return;
@@ -66,6 +67,8 @@ export default function HomeGallery({ projects }: { projects: ProjectInfo[] }) {
       if (!down) return;
       down = false;
       wrap.dataset.dragging = "false";
+      // Mark a real drag so the click that follows doesn't open a project.
+      if (moved > 6) wrap.dataset.suppressClick = "true";
       target += vel * 14;
     };
     const onWheel = (e: WheelEvent) => {
@@ -78,6 +81,7 @@ export default function HomeGallery({ projects }: { projects: ProjectInfo[] }) {
         e.preventDefault();
         e.stopPropagation();
       }
+      wrap.dataset.suppressClick = "false";
     };
     const onKey = (e: KeyboardEvent) => {
       const t = e.target as HTMLElement;
@@ -138,6 +142,7 @@ export default function HomeGallery({ projects }: { projects: ProjectInfo[] }) {
       ref={wrapRef}
       className={styles.stripWrap}
       data-dragging="false"
+      data-suppress-click="false"
       data-lenis-prevent
       aria-label="Selected work"
       role="region"
