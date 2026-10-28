@@ -1,4 +1,5 @@
 import HomeGallery from "@/components/Home/HomeGallery";
+import MoreAboutButton from "@/components/Home/MoreAboutButton";
 import { projects } from "./data";
 import styles from "@/components/Home/home.module.css";
 
@@ -8,13 +9,7 @@ export default function Home() {
       <h1 className="sr-only">Mohssine Chedgane, freelance designer and developer</h1>
       <HomeGallery projects={projects} />
       <div className={styles.foot}>
-        <p className={styles.intro}>
-          I&apos;m Mohssine, a freelance designer and developer in Rabat, Morocco.{" "}
-          <span>
-            I design and build fast websites, online stores and product interfaces for brands and
-            founders worldwide.
-          </span>
-        </p>
+        <MoreAboutButton />
         <p className={styles.hint}>
           <i aria-hidden="true" />
           Drag or scroll

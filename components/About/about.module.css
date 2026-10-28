@@ -1,0 +1,90 @@
+.rows {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 2rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid rgba(241, 241, 241, 0.16);
+}
+
+.row h3 {
+  margin: 0;
+  font-family: "jet", monospace;
+  font-weight: 400;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: #8c8c8c;
+}
+
+.row p,
+.row dt,
+.row dd,
+.row li {
+  font-family: "jet", monospace;
+  font-size: 0.75rem;
+  line-height: 1.55;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+.row p {
+  margin: 0 0 0.8em;
+  max-width: 60ch;
+}
+.row p:last-child {
+  margin-bottom: 0;
+}
+
+.services {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 2rem;
+}
+.services dd {
+  margin: 2px 0 0;
+  color: #8c8c8c;
+}
+
+.tools {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.tools li {
+  border: 1px solid rgba(241, 241, 241, 0.16);
+  border-radius: 5px;
+  padding: 4px 8px;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.25rem;
+}
+.links a {
+  color: #f1f1f1;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.links a:hover {
+  color: #8c8c8c;
+}
+
+@media (max-width: 700px) {
+  .row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.8rem;
+  }
+  .services {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
