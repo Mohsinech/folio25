@@ -1,0 +1,346 @@
+/* Contact sheet: slides up over the page, dark so it reads against the light site. */
+.scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s cubic-bezier(0.65, 0.05, 0, 1);
+}
+.scrim[data-open="true"] {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sheet {
+  position: fixed;
+  z-index: 2001;
+  left: 50%;
+  bottom: 0;
+  width: min(980px, calc(100% - 4rem));
+  height: calc(100% - 4.5rem);
+  background: #171717;
+  color: #f1f1f1;
+  display: flex;
+  flex-direction: column;
+  transform: translate(-50%, 104%);
+  visibility: hidden;
+  transition:
+    transform 0.9s cubic-bezier(0.65, 0.05, 0, 1),
+    visibility 0s 0.9s;
+}
+.sheet[data-open="true"] {
+  transform: translate(-50%, 0);
+  visibility: visible;
+  transition: transform 0.9s cubic-bezier(0.65, 0.05, 0, 1);
+}
+
+@media (max-width: 600px) {
+  .sheet {
+    width: 100%;
+    height: calc(100% - 3rem);
+  }
+}
+
+.bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem clamp(1.25rem, 3vw, 2.5rem) 0;
+}
+
+.tabs {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.tab,
+.close {
+  background: none;
+  border: 0;
+  padding: 4px 0;
+  cursor: pointer;
+  color: #8c8c8c;
+  font-family: "jet", monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+.tab:hover,
+.close:hover {
+  color: #f1f1f1;
+}
+.tab[aria-selected="true"] {
+  color: #f1f1f1;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+
+.body {
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0 clamp(1.25rem, 3vw, 2.5rem) 2.5rem;
+}
+
+/* ---------- Intro ---------- */
+.intro {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 2rem;
+  padding: 2.5rem 0 3rem;
+  border-bottom: 1px solid rgba(241, 241, 241, 0.16);
+}
+.intro h2 {
+  margin: 0;
+  font-family: "mon", sans-serif;
+  font-weight: 500;
+  font-size: clamp(2.75rem, 6.5vw, 5.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+.aside {
+  align-self: end;
+  display: grid;
+  gap: 1rem;
+  font-family: "jet", monospace;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: #8c8c8c;
+}
+.aside p {
+  margin: 0;
+}
+.aside a {
+  color: #f1f1f1;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 700px) {
+  .intro {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Rows ---------- */
+.rows {
+  display: grid;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 2rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid rgba(241, 241, 241, 0.16);
+  align-items: start;
+}
+.row:focus-within {
+  border-bottom-color: #f1f1f1;
+}
+
+.q {
+  display: flex;
+  gap: 1.5rem;
+  align-items: baseline;
+  font-family: "jet", monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+}
+.n {
+  color: #8c8c8c;
+  min-width: 1.6rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.opts {
+  display: grid;
+  gap: 0.35rem;
+}
+.opt {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  font-family: "jet", monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: #8c8c8c;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.opt:hover,
+.opt:has(input:checked) {
+  color: #f1f1f1;
+}
+.opt input {
+  appearance: none;
+  width: 11px;
+  height: 11px;
+  margin: 0;
+  border: 1px solid currentColor;
+  cursor: pointer;
+  flex: none;
+}
+.opt input[type="radio"] {
+  border-radius: 50%;
+}
+.opt input:checked {
+  background: #f1f1f1;
+  border-color: #f1f1f1;
+}
+.opt input:focus-visible {
+  outline: 1px solid #f1f1f1;
+  outline-offset: 2px;
+}
+
+.row input,
+.row textarea {
+  width: 100%;
+  font-family: "jet", monospace;
+  font-size: 0.78rem;
+  color: #f1f1f1;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  resize: none;
+  field-sizing: content;
+  min-height: 1.4em;
+}
+.row input::placeholder,
+.row textarea::placeholder {
+  color: #5c5c5c;
+}
+.row input:focus,
+.row textarea:focus {
+  outline: none;
+}
+
+.err {
+  grid-column: 2;
+  margin: -0.4rem 0 0;
+  color: #ff8a7a;
+  font-family: "jet", monospace;
+  font-size: 0.7rem;
+}
+
+@media (max-width: 700px) {
+  .row {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+  }
+  .err {
+    grid-column: 1;
+  }
+}
+
+.honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* ---------- Send ---------- */
+.sendRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 1rem;
+  padding-top: 2.5rem;
+}
+.mono,
+.label {
+  margin: 0;
+  font-family: "jet", monospace;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  color: #8c8c8c;
+}
+.failed {
+  color: #ff8a7a;
+}
+.send {
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  color: #f1f1f1;
+  font-family: "mon", sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.04em;
+}
+.send:hover {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 1px;
+}
+.send:disabled {
+  opacity: 0.5;
+  cursor: progress;
+}
+
+.pill {
+  display: inline-block;
+  margin-top: 1rem;
+  background: rgba(241, 241, 241, 0.1);
+  color: #f1f1f1;
+  border: 0;
+  border-radius: 5px;
+  padding: 8px 10px;
+  cursor: pointer;
+  font-family: "jet", monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+.pill:hover {
+  background: rgba(241, 241, 241, 0.18);
+}
+
+.done h3 {
+  margin: 3rem 0 1rem;
+  font-family: "mon", sans-serif;
+  font-weight: 500;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+.done p {
+  margin: 0;
+  color: #8c8c8c;
+  font-family: "jet", monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+}
+
+/* ---------- Email tab ---------- */
+.emailPane {
+  display: grid;
+  gap: 2.5rem;
+  padding: 2.5rem 0;
+}
+.emailPane > div {
+  display: grid;
+  justify-items: start;
+  gap: 0.4rem;
+}
+.big {
+  font-family: "mon", sans-serif;
+  font-size: clamp(1.6rem, 4vw, 3rem);
+  letter-spacing: -0.035em;
+  overflow-wrap: anywhere;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sheet,
+  .scrim {
+    transition-duration: 1ms;
+  }
+}

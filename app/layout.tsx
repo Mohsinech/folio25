@@ -3,7 +3,7 @@ import "@/styles/globals.css";
 import { Header } from "@/components/layouts";
 import { SmoothScroll } from "@/utils/index";
 import ViewTransitionHandler from "@/components/ViewTransitionHandler";
-import MobileHeader from "@/components/screen/Header/MobileHeader";
+import ContactProvider from "@/components/Contact/ContactProvider";
 import Preloader from "@/components/Preloader";
 
 export const metadata: Metadata = {
@@ -96,21 +96,12 @@ export default function RootLayout({
             }),
           }}
         />
-        <header>
-          {/* Logic: Hide on mobile, show on desktop */}
-          <div className="hidden md:block">
-            <Header />
-          </div>
-
-          {/* Logic: Show on mobile, hide on desktop */}
-          <div className="block md:hidden">
-            <MobileHeader />
-          </div>
-        </header>
-
-        <ViewTransitionHandler />
-        <SmoothScroll />
-        {children}
+        <ContactProvider>
+          <Header />
+          <ViewTransitionHandler />
+          <SmoothScroll />
+          {children}
+        </ContactProvider>
       </body>
     </html>
   );

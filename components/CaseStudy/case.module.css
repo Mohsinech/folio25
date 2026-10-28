@@ -297,3 +297,69 @@
     padding: 1rem;
   }
 }
+
+/* ---------- Additions for the shared case study ---------- */
+.visit {
+  display: inline-block;
+  margin-top: 1.5rem;
+  background: #171717;
+  color: #f1f1f1;
+  border-radius: 5px;
+  padding: 8px 10px;
+  font-family: "jet", sans-serif;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: -0.045rem;
+  transition: background-color 0.3s cubic-bezier(0.65, 0.05, 0, 1);
+}
+.visit:hover {
+  background: #333;
+}
+
+.next {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr;
+  gap: 1rem 2rem;
+  align-items: end;
+  padding: 1rem 0 4rem;
+  border-top: 1px solid rgba(23, 23, 23, 0.16);
+}
+.next p {
+  grid-column: 1 / -1;
+  font-family: "jet", sans-serif;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  color: #777;
+}
+.nextLink {
+  font-family: "mon", sans-serif;
+  font-weight: 800;
+  font-size: clamp(3rem, 8vw, 9rem);
+  line-height: 0.85;
+  letter-spacing: -0.025em;
+  transition: color 0.4s cubic-bezier(0.65, 0.05, 0, 1);
+}
+.nextLink:hover {
+  color: #777;
+}
+.allWork {
+  justify-self: end;
+  font-family: "jet", sans-serif;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  background: #e6e6e680;
+  border-radius: 5px;
+  padding: 8px 10px;
+}
+.allWork:hover {
+  background: #dcd9d9;
+}
+
+@media (max-width: 600px) {
+  .next {
+    grid-template-columns: 1fr;
+  }
+  .allWork {
+    justify-self: start;
+  }
+}

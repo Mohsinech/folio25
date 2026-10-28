@@ -2,15 +2,13 @@
 
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-type ContactFormData = {
+export type ContactPayload = {
+  kind: "project" | "hiring";
   name: string;
   email: string;
-  org: string;
-  service: string;
-  budget: string;
-  message: string;
+  answers: { label: string; value: string }[];
+  /** Honeypot: real visitors never see or fill this field. */
+  website?: string;
 };
 
 const escapeHtml = (value: string) =>
@@ -21,29 +19,46 @@ const escapeHtml = (value: string) =>
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
 
-export async function sendEmail(formData: ContactFormData) {
-  const { name, email, org, service, budget, message } = formData;
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+export async function sendEmail(payload: ContactPayload) {
+  // Bots fill the honeypot; report success so they move on.
+  if (payload.website) return { success: true };
+
+  const name = payload.name?.trim().slice(0, 200) ?? "";
+  const email = payload.email?.trim().slice(0, 200) ?? "";
+  if (!name || !EMAIL_RE.test(email)) return { success: false };
+
+  const answers = (Array.isArray(payload.answers) ? payload.answers : [])
+    .slice(0, 20)
+    .map((a) => ({
+      label: String(a.label ?? "").slice(0, 60),
+      value: String(a.value ?? "").slice(0, 4000),
+    }))
+    .filter((a) => a.label && a.value);
+
+  const kind = payload.kind === "hiring" ? "Hiring inquiry" : "Project inquiry";
 
   try {
-    const data = await resend.emails.send({
+    const resend = new Resend(process.env.RESEND_API_KEY);
+    const { error } = await resend.emails.send({
       from: "Portfolio Contact <contact@mohssinechedgane.com>",
       to: ["chedganemouhssine@gmail.com"],
-      subject: `New Inquiry from ${name}`,
+      subject: `${kind} from ${name}`,
       replyTo: email,
       html: `
-        <h2>New Inquiry from ${escapeHtml(name)}</h2>
+        <h2>${kind} from ${escapeHtml(name)}</h2>
         <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-        <p><strong>Organization:</strong> ${escapeHtml(org)}</p>
-        <p><strong>Service:</strong> ${escapeHtml(service)}</p>
-        <p><strong>Budget:</strong> ${escapeHtml(budget)}</p>
-        <hr />
-        <h3>Message:</h3>
-        <p>${escapeHtml(message).replaceAll("\n", "<br />")}</p>
+        ${answers
+          .map(
+            (a) =>
+              `<p><strong>${escapeHtml(a.label)}:</strong><br />${escapeHtml(a.value).replaceAll("\n", "<br />")}</p>`,
+          )
+          .join("")}
       `,
     });
-
-    return { success: true, data };
-  } catch (error) {
-    return { success: false, error };
+    return { success: !error };
+  } catch {
+    return { success: false };
   }
 }
