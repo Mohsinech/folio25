@@ -90,7 +90,7 @@
 /* ---------- Intro ---------- */
 .intro {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
   gap: 2rem;
   padding: 2.5rem 0 3rem;
   border-bottom: 1px solid rgba(241, 241, 241, 0.16);
@@ -125,18 +125,20 @@
 
 @media (max-width: 700px) {
   .intro {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
 /* ---------- Rows ---------- */
 .rows {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .row {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
+  /* minmax(0, …) lets both columns shrink; plain fr tracks grow to fit their widest content */
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
   gap: 2rem;
   padding: 1.1rem 0;
   border-bottom: 1px solid rgba(241, 241, 241, 0.16);
@@ -166,6 +168,7 @@
 }
 .opt {
   display: flex;
+  min-width: 0;
   gap: 0.6rem;
   align-items: center;
   font-family: "jet", monospace;
@@ -200,7 +203,8 @@
   outline-offset: 2px;
 }
 
-.row input,
+/* Text fields only: checkboxes and radios keep their own small size */
+.row input:not([type="checkbox"], [type="radio"]),
 .row textarea {
   width: 100%;
   font-family: "jet", monospace;
@@ -209,15 +213,25 @@
   background: transparent;
   border: 0;
   padding: 0;
+  min-width: 0;
   resize: none;
-  field-sizing: content;
   min-height: 1.4em;
 }
-.row input::placeholder,
+
+/* Browser autofill paints a light background; keep the field dark */
+.row input:-webkit-autofill,
+.row input:-webkit-autofill:hover,
+.row input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #f1f1f1;
+  caret-color: #f1f1f1;
+  box-shadow: 0 0 0 1000px #171717 inset;
+  transition: background-color 9999s ease-out 0s;
+}
+.row input:not([type="checkbox"], [type="radio"])::placeholder,
 .row textarea::placeholder {
   color: #5c5c5c;
 }
-.row input:focus,
+.row input:not([type="checkbox"], [type="radio"]):focus,
 .row textarea:focus {
   outline: none;
 }
@@ -232,7 +246,7 @@
 
 @media (max-width: 700px) {
   .row {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 0.7rem;
   }
   .err {
