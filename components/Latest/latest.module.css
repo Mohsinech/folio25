@@ -1,0 +1,53 @@
+.cover {
+  margin-top: 2rem;
+  padding: clamp(1rem, 3vw, 2.5rem);
+  background: #222;
+}
+
+.shot {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #222;
+}
+.shot img {
+  object-fit: cover;
+}
+
+.strip {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.rows {
+  margin-top: 2rem;
+}
+
+.end {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: end;
+  gap: 1rem;
+  padding-top: 2.5rem;
+}
+
+.live {
+  font-family: "jet", monospace;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  color: #8c8c8c;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.live:hover {
+  color: #f1f1f1;
+}
+
+@media (max-width: 600px) {
+  .strip {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

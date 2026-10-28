@@ -5,8 +5,6 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import ScrambleSimple from "@/utils/ScrambleSimple/ScrambleSimple";
 import { ScrambleLink } from "@/utils";
-import LatestProjectModal from "@/components/LatestProjectModal";
-import ModalMobile from "@/components/screen/Modal/ModalMobile";
 import { useContact } from "@/components/Contact/ContactProvider";
 import { site } from "@/app/data";
 import LocalTime from "./LocalTime";
@@ -27,8 +25,6 @@ const Header = () => {
   const pathname = usePathname();
   const contact = useContact();
   const [drop, setDrop] = useState<Drop>(null);
-  const [latestOpen, setLatestOpen] = useState(false);
-  const [latestVariant, setLatestVariant] = useState<"mobile" | "desktop">("desktop");
   const [hidden, setHidden] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
 
@@ -48,7 +44,6 @@ const Header = () => {
   useEffect(() => {
     const id = window.setTimeout(() => {
       setDrop(null);
-      setLatestOpen(false);
       setHidden(false);
     }, 0);
     return () => window.clearTimeout(id);
@@ -69,18 +64,9 @@ const Header = () => {
     };
   }, [drop]);
 
-  // Blur the page behind the Latest Project modal, as before.
-  useEffect(() => {
-    const main = document.querySelector("main");
-    if (!main) return;
-    main.style.filter = latestOpen ? "blur(8px)" : "";
-    main.style.pointerEvents = latestOpen ? "none" : "";
-  }, [latestOpen]);
-
   const openLatest = () => {
     setDrop(null);
-    setLatestVariant(window.innerWidth <= 1024 ? "mobile" : "desktop");
-    setLatestOpen(true);
+    contact.openLatest();
   };
 
   const openContact = () => {
@@ -117,7 +103,12 @@ const Header = () => {
         </p>
 
         <nav className={styles.nav} aria-label="Main">
-          <button type="button" className={`${styles.btn} ${styles.hideSm}`} onClick={openLatest}>
+          <button
+            type="button"
+            className={`${styles.btn} ${styles.hideSm}`}
+            onClick={openLatest}
+            aria-haspopup="dialog"
+          >
             <ScrambleSimple label="Latest project" />
           </button>
 
@@ -205,14 +196,6 @@ const Header = () => {
         </nav>
       </header>
 
-      <ModalMobile
-        isOpen={latestOpen && latestVariant === "mobile"}
-        onClose={() => setLatestOpen(false)}
-      />
-      <LatestProjectModal
-        isOpen={latestOpen && latestVariant === "desktop"}
-        onClose={() => setLatestOpen(false)}
-      />
     </>
   );
 };
