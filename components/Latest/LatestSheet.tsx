@@ -119,7 +119,7 @@ export default function LatestSheet({ isOpen, onClose }: { isOpen: boolean; onCl
             ) : (
               <span />
             )}
-            <Link href={`/work/${project.slug}`} data-vt="true" className={sheet.send}>
+            <Link href={`/work/${project.slug}`} className={sheet.send}>
               Read the case study
             </Link>
           </div>

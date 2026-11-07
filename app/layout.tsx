@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "@/styles/globals.css";
 import { Header } from "@/components/layouts";
 import { SmoothScroll } from "@/utils/index";
-import ViewTransitionHandler from "@/components/ViewTransitionHandler";
 import ContactProvider from "@/components/Contact/ContactProvider";
 import Preloader from "@/components/Preloader";
 
@@ -98,7 +97,6 @@ export default function RootLayout({
         />
         <ContactProvider>
           <Header />
-          <ViewTransitionHandler />
           <SmoothScroll />
           {children}
         </ContactProvider>

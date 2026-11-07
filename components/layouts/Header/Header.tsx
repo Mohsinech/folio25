@@ -85,8 +85,6 @@ const Header = () => {
       >
         <div className={styles.logo}>
           <ScrambleLink
-            data-vt="true"
-            view-transition-name="logo"
             className={styles.h1}
             href="/"
             label="MOHSSINE"
@@ -168,7 +166,7 @@ const Header = () => {
                     </button>
                   </li>
                   <li>
-                    <a href="/" data-vt="true">
+                    <a href="/">
                       All work
                     </a>
                   </li>

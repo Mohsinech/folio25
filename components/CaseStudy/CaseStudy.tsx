@@ -77,7 +77,7 @@ export default function CaseStudy({ project }: { project: ProjectInfo }) {
             <span>{project.category}</span>
             <span>Case study</span>
           </p>
-          <h1 className={styles.title} style={{ viewTransitionName: "read-more" }}>
+          <h1 className={styles.title}>
             <span className={styles.line}>
               <span>{project.title}</span>
             </span>
@@ -172,12 +172,11 @@ export default function CaseStudy({ project }: { project: ProjectInfo }) {
           <span>Next case</span>
           <span>{next.year}</span>
         </p>
-        <Link href={`/work/${next.slug}`} data-vt="true" className={styles.nextTitle}>
+        <Link href={`/work/${next.slug}`} className={styles.nextTitle}>
           {next.title}
         </Link>
         <Link
           href={`/work/${next.slug}`}
-          data-vt="true"
           className={styles.nextThumb}
           aria-hidden="true"
           tabIndex={-1}
