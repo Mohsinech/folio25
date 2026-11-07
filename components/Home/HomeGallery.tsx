@@ -113,7 +113,7 @@ export default function HomeGallery({ projects }: { projects: ProjectInfo[] }) {
           const r = img.parentElement!.getBoundingClientRect();
           if (r.right < 0 || r.left > vw) continue;
           const c = (r.left + r.width / 2 - vw / 2) / vw;
-          img.style.transform = `translate3d(${c * -8}%, 0, 0)`;
+          img.style.transform = `translate3d(${c * -3}%, 0, 0)`;
         }
       }
       raf = requestAnimationFrame(loop);
@@ -162,7 +162,7 @@ export default function HomeGallery({ projects }: { projects: ProjectInfo[] }) {
                   src={t.src}
                   alt={copy === 1 ? t.project.title : ""}
                   fill
-                  sizes="(max-width: 600px) 76vw, 380px"
+                  sizes="(max-width: 600px) 86vw, 680px"
                   draggable={false}
                   data-parallax
                   priority={copy === 1 && i < 4}
