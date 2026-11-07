@@ -5,8 +5,8 @@
   color: #171717;
   font-family: "mon", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --side: 2rem;
-  --inset: clamp(var(--side), 15vw, 16rem);
-  --inset-media: clamp(var(--side), 8vw, 8rem);
+  --inset: clamp(var(--side), 6vw, 6rem);
+  --inset-media: clamp(var(--side), 4vw, 4rem);
   --line: rgba(23, 23, 23, 0.16);
   --ease: cubic-bezier(0.65, 0.05, 0, 1);
 }
@@ -58,7 +58,7 @@
 
 .meta {
   margin: clamp(3rem, 6vw, 5rem) 0 0;
-  max-width: 62rem;
+  max-width: 84rem;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 2rem clamp(2rem, 5vw, 4rem);
@@ -103,7 +103,7 @@
 }
 .big {
   margin: 0;
-  max-width: 42ch;
+  max-width: 56ch;
   font-size: clamp(1.6rem, 1rem + 2.1vw, 2.85rem);
   line-height: 1.14;
   letter-spacing: -0.025em;
@@ -117,7 +117,7 @@
   padding: clamp(5rem, 10vw, 9rem) var(--side) 0 var(--inset);
 }
 .row {
-  max-width: 70rem;
+  max-width: 92rem;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 2rem clamp(2rem, 5vw, 4rem);
@@ -128,7 +128,7 @@
 }
 .row h2 {
   margin: 0;
-  max-width: 18ch;
+  max-width: 22ch;
   font-weight: 500;
   font-size: clamp(1.5rem, 1rem + 1.6vw, 2.35rem);
   line-height: 1.05;
@@ -137,7 +137,7 @@
 }
 .body {
   margin: 0;
-  max-width: 46ch;
+  max-width: 62ch;
   font-size: 1rem;
   line-height: 1.55;
   color: #3a3a3a;
@@ -174,7 +174,7 @@
   padding: clamp(3rem, 8vw, 8rem) var(--side) clamp(3rem, 8vw, 8rem) var(--inset);
 }
 .wide .scr {
-  max-width: 76rem;
+  max-width: 100rem;
 }
 .pair {
   display: grid;
@@ -213,7 +213,7 @@
 
 /* ---------- Credits ---------- */
 .credits {
-  max-width: calc(70rem + var(--inset));
+  max-width: calc(92rem + var(--inset));
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
   gap: 2rem;
