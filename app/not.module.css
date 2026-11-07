@@ -41,7 +41,7 @@
 .index span,
 .eyebrow {
   color: #8f8f8f;
-  font-family: "jet", sans-serif;
+  font-family: "mon", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 0.68rem;
   line-height: 1.3;
   text-transform: uppercase;
@@ -57,7 +57,7 @@
 }
 
 .centeredText h1 {
-  font-family: "mon", sans-serif;
+  font-family: "mon", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: clamp(3rem, 10vw, 9rem);
   line-height: 0.9;
   max-width: 8ch;
@@ -65,7 +65,7 @@
 
 .centeredText h3 {
   color: #cfcfcf;
-  font-family: "mori", sans-serif;
+  font-family: "mon", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: clamp(1rem, 1.8vw, 1.7rem);
   line-height: 1.15;
   max-width: 28rem;
@@ -79,7 +79,7 @@
 
 .teleportLink {
   color: #f1f1f1;
-  font-family: "jet", sans-serif;
+  font-family: "mon", "Helvetica Neue", Helvetica, Arial, sans-serif;
   letter-spacing: -0.09rem;
   position: relative;
   width: 100%;

@@ -13,7 +13,7 @@
 
 .row h3 {
   margin: 0;
-  font-family: "jet", monospace;
+  font-family: "mon", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-size: 0.72rem;
   text-transform: uppercase;
@@ -24,11 +24,11 @@
 .row dt,
 .row dd,
 .row li {
-  font-family: "jet", monospace;
+  font-family: "mon", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 0.75rem;
   line-height: 1.55;
   text-transform: uppercase;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.01em;
 }
 
 .row p {

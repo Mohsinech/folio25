@@ -7,6 +7,8 @@ body,
 html {
   overflow-x: clip;
   background-color: #f1f1f1;
+  /* One global font for the whole site */
+  font-family: "mon", "Helvetica Neue", Helvetica, Arial, sans-serif;
   /* height: 100dvh; */
 }
 

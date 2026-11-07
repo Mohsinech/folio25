@@ -29,16 +29,16 @@
   line-height: 1.1;
 }
 .logo .h1 {
-  font-family: "mon", sans-serif;
+  font-family: "mon", "Helvetica Neue", Helvetica, Arial, sans-serif;
   letter-spacing: -0.025rem;
   font-size: 1rem;
   font-weight: 600;
 }
 .role {
-  font-family: "jet", sans-serif;
+  font-family: "mon", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 0.68rem;
   text-transform: uppercase;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.01em;
   color: #777;
 }
 
@@ -49,10 +49,10 @@
   gap: 0.9rem;
   margin: 0;
   white-space: nowrap;
-  font-family: "jet", sans-serif;
+  font-family: "mon", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 0.68rem;
   text-transform: uppercase;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.01em;
   color: #545454;
 }
 .avail {
@@ -106,11 +106,11 @@
 }
 .btn h2 {
   color: inherit;
-  font-family: "jet", sans-serif;
+  font-family: "mon", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 0.7rem;
   font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: -0.045rem;
+  letter-spacing: 0.01em;
 }
 .btnActive,
 .btnActive:hover {
@@ -180,10 +180,10 @@
   cursor: pointer;
   text-align: left;
   color: inherit;
-  font-family: "jet", sans-serif;
+  font-family: "mon", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 0.72rem;
   text-transform: uppercase;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.01em;
 }
 .dropList a:hover,
 .dropList button:hover {
@@ -203,7 +203,7 @@
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-  font-family: "jet", sans-serif;
+  font-family: "mon", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 0.6rem;
   text-transform: uppercase;
   opacity: 0.8;

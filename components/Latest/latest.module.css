@@ -35,7 +35,7 @@
 }
 
 .live {
-  font-family: "jet", monospace;
+  font-family: "mon", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 0.68rem;
   text-transform: uppercase;
   color: #8c8c8c;
